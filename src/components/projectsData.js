@@ -31,8 +31,8 @@ export const projects = [
     },
     {
         id: 3,
-        title: "AI Image Classfier",
-        description: "An AI that predicts the classifications of an upload image.",
+        title: "AI Image Classifier",
+        description: "An AI that predicts the classifications of an uploaded image.",
         image: "/projects/Project3.png",
         tags: ["Python", "API", "AI"],
         demoUrl: "#",
