@@ -11,7 +11,7 @@ export const AboutSection = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
                     {/* Photo */}
-                    <img src="public/Portrait.png" alt="My Portrait" />
+                    <img src="/Portrait.png" alt="My Portrait" />
 
                     {/* Skills List
                     <div className="grid grid-cols-1 gap-6">
