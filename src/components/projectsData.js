@@ -2,7 +2,7 @@ export const projects = [
     {
         id: 2,
         title: "Geography Quiz",
-        description: "Developed a geography trivia web application to engage 150+ children and students.",
+        description: "Designed and developed a geography quiz web application to engage 150+ children and students, improving their geographical knowledge and critical thinking skills.",
         image: "/projects/Project2.PNG",
         tags: ["Django", "Python", "HTML/CSS", "JavaScript"],
         demoUrl: "#",
@@ -12,7 +12,7 @@ export const projects = [
     {
         id: 5,
         title: "Free Food Newsletter",
-        description: "Developed a script with AI and scraped data from 40+ events from the University of South Florida website that offered free food.",
+        description: "Developed a script with AI and scraped data from 40+ events from the University of South Florida website that offered free food, improving event accessibility for students.",
         image: "/projects/Project5.png",
         tags: ["Python", "API", "AI"],
         demoUrl: "#",
@@ -22,7 +22,7 @@ export const projects = [
     {
         id: 6,
         title: "This Portfolio",
-        description: "A portfolio made with React.js to showcase my projects, skills, and personal information.",
+        description: "Designed and developed this portfolio using React.js and Tailwind CSS to showcase my projects, skills, and personal information.",
         image: "/projects/Project6.png",
         tags: ["React", "JavaScript", "Tailwind CSS", "HTML/CSS"],
         demoUrl: "#",
@@ -32,7 +32,7 @@ export const projects = [
     {
         id: 3,
         title: "AI Image Classifier",
-        description: "An AI that predicts the classifications of an uploaded image.",
+        description: "Developed an AI image classifier application in Python, leveraging TensorFlow for deep learning, and integrated NumPy, OpenCV, and Streamlit for efficient data processing, image handling, and user interface deployment.",
         image: "/projects/Project3.png",
         tags: ["Python", "API", "AI"],
         demoUrl: "#",
@@ -42,7 +42,7 @@ export const projects = [
     {
         id: 9,
         title: "Gym App",
-        description: "A web and mobile application made with Flutter to track my stats and goals in the gym.",
+        description: "Designed and developed a web and mobile application made with Flutter to track my stats and goals in the gym.",
         image: "/projects/Project9.png",
         tags: ["Flutter", "Dart", "C++"],
         demoUrl: "#",
@@ -52,7 +52,7 @@ export const projects = [
     {
         id: 1,
         title: "Blockchain Program",
-        description: "Programmed a functional blockchain prototype simulating peer-to-peer energy transactions.",
+        description: "Programmed a functional blockchain prototype to simulate this technology usage in peer-to-peer energy transactions.",
         image: "/projects/Project1.PNG",
         tags: ["TypeScript"],
         demoUrl: "#",
