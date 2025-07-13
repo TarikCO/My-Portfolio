@@ -26,7 +26,7 @@ export const projects = [
         image: "/projects/Project6.png",
         tags: ["React", "JavaScript", "Tailwind CSS", "HTML/CSS"],
         demoUrl: "#",
-        githubUrl: "#",
+        githubUrl: "https://github.com/TarikCO/My-Portfolio",
         category: "programming"
     },
     {
