@@ -46,7 +46,7 @@ export const projects = [
         image: "/projects/Project9.png",
         tags: ["Flutter", "Dart", "C++"],
         demoUrl: "#",
-        githubUrl: "#",
+        githubUrl: "https://github.com/TarikCO/Gym-App",
         category: "programming"
     },
     {
