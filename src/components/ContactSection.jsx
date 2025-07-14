@@ -62,7 +62,8 @@ export const ContactSection = () => {
                             <div className="text-center">
                                 <h4 className="font-medium max-w-[325px]">Location</h4>
                                 <p className="text-muted-foreground max-w-[325px]">
-                                    Tampa, Florida, United States
+                                    Tampa, Florida, <span className="hidden sm:inline">United States</span>
+                                    <span className="inline sm:hidden">US</span>
                                 </p>
                             </div>
 
