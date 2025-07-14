@@ -32,7 +32,7 @@ export const projects = [
     {
         id: 3,
         title: "AI Image Classifier",
-        description: "Developed an AI image classifier application in Python, leveraging TensorFlow for deep learning, and integrated NumPy, OpenCV, and Streamlit for efficient data processing, image handling, and user interface deployment.",
+        description: "Developed an AI image classifier in Python using TensorFlow, and integrated NumPy, OpenCV, and Streamlit for data processing, image handling, and UI deployment.",
         image: "/projects/Project3.png",
         tags: ["Python", "API", "AI"],
         demoUrl: "#",
