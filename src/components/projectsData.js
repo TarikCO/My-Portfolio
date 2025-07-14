@@ -36,7 +36,7 @@ export const projects = [
         image: "/projects/Project3.png",
         tags: ["Python", "API", "AI"],
         demoUrl: "#",
-        githubUrl: "#",
+        githubUrl: "https://github.com/TarikCO/AI-Image-Classifier",
         category: "programming"
     },
     {
