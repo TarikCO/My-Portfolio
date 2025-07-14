@@ -140,6 +140,24 @@
          hover:scale-105 active:scale-95;
 }
 
+  @media (min-width: 850px) {
+  .show-us {
+    display: none;
+  }
+  .show-united-states {
+    display: inline;
+  }
+}
+
+@media (max-width: 849px) {
+  .show-us {
+    display: inline;
+  }
+  .show-united-states {
+    display: none;
+  }
+}
+
 #root {
   max-width: 100%;
   margin: 0 auto;
