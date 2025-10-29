@@ -60,18 +60,18 @@ export const AboutSection = () => {
                     {/* About me Text */}
                     <div className="space-y-6">
                         <h3 className="text-2xl font-semibold">Passionate Computer Science student</h3>
-                        <p className="text-muted-foreground">I have experience in software and web development, 
-                            data science, and computer organization. In particular, 
-                            I am interested in Blockchain technology and Geographic 
-                            Information Systems, as well as the implementation of 
-                            technological methods into sustainable energy solutions. 
+                        <p className="text-muted-foreground">I am passionate about software and web development, 
+                            data science, and artificial intelligence. In particular, 
+                            I am interested on building web and mobile applications as in 
+                            Full Stack development as well as leveraging AI to make solutions more
+                            efficient and scalable.
                         </p>
                         <p className="text-muted-foreground">
                             My journey so far has been defined by learning through building. 
-                            I have taken every opportunity to deepen my practical skills and 
-                            developing challenging programming projects. From Python, Javascript, 
-                            Typescript, and Django to React, I am eager to keep expanding my 
-                            technical abilities.
+                            I have taken every opportunity to deepen my technical skills and 
+                            build impactful programming projects. From Python, Javascript, 
+                            Typescript, and Django to React and Flutter, I am eager to keep
+                            developing solutions that have real-world contributions.
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
