@@ -9,16 +9,17 @@ const skills = [
     {name: "Tailwind CSS", level: 80, category: "frontend"},
 
     {name: "Python", level: 100, category: "backend"},
-    {name: "Django", level: 90, category: "backend"},
+    {name: "Dart", level: 90, category: "backend"},
+    {name: "Django", level: 80, category: "backend"},
     {name: "Node.js", level: 70, category: "backend"},
-    {name: "Dart", level: 60, category: "backend"},
-    {name: "C", level: 50, category: "backend"},
-    {name: "C++", level: 45, category: "backend"},
+    {name: "C", level: 65, category: "backend"},
+    {name: "C++", level: 55, category: "backend"},
     {name: "SQL", level: 45, category: "backend"},
 
     {name: "VS Code", level: 100, category: "tools"},
+    {name: "Flutter", level: 90, category: "tools"},
     {name: "GitHub", level: 90, category: "tools"},
-    {name: "Flutter", level: 70, category: "tools"},
+    {name: "Firebase", level: 90, category: "tools"},
 ]
 
 const categories = ["all", "frontend", "backend", "tools"]

@@ -61,16 +61,16 @@ export const AboutSection = () => {
                     <div className="space-y-6">
                         <h3 className="text-2xl font-semibold">Passionate Computer Science student</h3>
                         <p className="text-muted-foreground">I have experience in software and web development, 
-                            data science, and computer organization. In particular, 
-                            I am interested in Blockchain technology and Geographic 
-                            Information Systems, as well as the implementation of 
-                            technological methods into sustainable energy solutions. 
+                            data science, and AI. In particular, I am very interested on 
+                            web/mobile app development and I am passionate about UX Design. I also enjoy learning
+                            about blockchain and its impact on sustainable energy solutions.
                         </p>
                         <p className="text-muted-foreground">
                             My journey so far has been defined by learning through building. 
                             I have taken every opportunity to deepen my practical skills and 
-                            developing challenging programming projects. From Python, Javascript, 
-                            Typescript, and Django to React, I am eager to keep expanding my 
+                            developing challenging programming projects while being
+                            part of big organizations - such as BRASA Connect. From Python, Javascript, 
+                            Typescript, Django, and React to Flutter, I am eager to keep expanding my 
                             technical abilities.
                         </p>
 

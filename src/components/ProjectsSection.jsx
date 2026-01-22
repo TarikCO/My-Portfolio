@@ -9,7 +9,7 @@ export const ProjectsSection = () => {
     // Make filter
     const [activeCategory, setActiveCategory] = useState("all")
 
-    const filteredProjects = projects.filter((project) => activeCategory === "all" || project.category === activeCategory)
+    const filteredProjects = projects.filter((project) => activeCategory === "all" || project.category.includes(activeCategory))
 
     return (
         <section id="projects" className="py-24 px-4 relative">
