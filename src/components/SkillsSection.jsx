@@ -5,11 +5,12 @@ const skills = [
     {name: "HTML/CSS", level: 100, category: "frontend"},
     {name: "JavaScript", level: 95, category: "frontend"},
     {name: "React", level: 95, category: "frontend"},
+    {name: "Tailwind CSS", level: 90, category: "frontend"},
     {name: "TypeScript", level: 80, category: "frontend"},
-    {name: "Tailwind CSS", level: 80, category: "frontend"},
 
     {name: "Python", level: 100, category: "backend"},
     {name: "Dart", level: 90, category: "backend"},
+<<<<<<< HEAD
     {name: "Django", level: 80, category: "backend"},
     {name: "Node.js", level: 70, category: "backend"},
     {name: "C", level: 65, category: "backend"},
@@ -20,6 +21,17 @@ const skills = [
     {name: "Flutter", level: 90, category: "tools"},
     {name: "GitHub", level: 90, category: "tools"},
     {name: "Firebase", level: 90, category: "tools"},
+=======
+    {name: "Django", level: 90, category: "backend"},
+    {name: "Node.js", level: 80, category: "backend"},
+    {name: "C", level: 70, category: "backend"},
+    {name: "C++", level: 45, category: "backend"},
+    {name: "SQL", level: 45, category: "backend"},
+
+    {name: "VS Code", level: 100, category: "tools"},
+    {name: "Flutter", level: 95, category: "tools"},
+    {name: "GitHub", level: 90, category: "tools"},
+>>>>>>> 4644c1acfb6cdca9e0856758c3d71605707416c5
 ]
 
 const categories = ["all", "frontend", "backend", "tools"]

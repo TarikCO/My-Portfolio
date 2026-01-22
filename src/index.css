@@ -140,7 +140,11 @@
          hover:scale-105 active:scale-95;
 }
 
+<<<<<<< HEAD
 @media (min-width: 850px) {
+=======
+  @media (min-width: 850px) {
+>>>>>>> 4644c1acfb6cdca9e0856758c3d71605707416c5
   .show-us {
     display: none;
   }
