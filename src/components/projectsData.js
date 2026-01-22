@@ -44,11 +44,7 @@ export const projects = [
         title: "This Portfolio",
         description: "Designed and developed this portfolio using React.js and Tailwind CSS to showcase my projects, skills, and personal information.",
         image: "/projects/Project6.png",
-<<<<<<< HEAD
         tags: ["React.js", "JavaScript", "Tailwind CSS", "HTML/CSS"],
-=======
-        tags: ["React", "JavaScript", "Tailwind CSS", "HTML/CSS"],
->>>>>>> 4644c1acfb6cdca9e0856758c3d71605707416c5
         demoUrl: "#",
         githubUrl: "https://github.com/TarikCO/My-Portfolio",
         category: "programming"

@@ -16,13 +16,8 @@ export const HeroSection = () => {
 
                 <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in-delay-3">
                     I am a second year Computer Science student at the University of South Florida. 
-<<<<<<< HEAD
                     I am passionate about software, web, and mobile development, as well as AI, 
                     UX Design, and Blockchain.
-=======
-                    I am passionate about software engineering and web development, as well as as Data-Science
-                    and Artificial Intelligence.
->>>>>>> 4644c1acfb6cdca9e0856758c3d71605707416c5
                 </p>
 
                 <div className="pt-4 opacity-0 animate-fade-in-delay-4">

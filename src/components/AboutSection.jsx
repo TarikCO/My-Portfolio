@@ -60,7 +60,6 @@ export const AboutSection = () => {
                     {/* About me Text */}
                     <div className="space-y-6">
                         <h3 className="text-2xl font-semibold">Passionate Computer Science student</h3>
-<<<<<<< HEAD
                         <p className="text-muted-foreground">I have experience in software and web development, 
                             data science, and AI. In particular, I am very interested on 
                             web/mobile app development and I am passionate about UX Design. I also enjoy learning
@@ -73,20 +72,6 @@ export const AboutSection = () => {
                             part of big organizations - such as BRASA Connect. From Python, Javascript, 
                             Typescript, Django, and React to Flutter, I am eager to keep expanding my 
                             technical abilities.
-=======
-                        <p className="text-muted-foreground">I am passionate about software and web development, 
-                            data science, and artificial intelligence. In particular, 
-                            I am interested on building web and mobile applications as in 
-                            Full Stack development as well as leveraging AI to make solutions more
-                            efficient and scalable.
-                        </p>
-                        <p className="text-muted-foreground">
-                            My journey so far has been defined by learning through building. 
-                            I have taken every opportunity to deepen my technical skills and 
-                            build impactful programming projects. From Python, Javascript, 
-                            Typescript, and Django to React and Flutter, I am eager to keep
-                            developing solutions that have real-world contributions.
->>>>>>> 4644c1acfb6cdca9e0856758c3d71605707416c5
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
