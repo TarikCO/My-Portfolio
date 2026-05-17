@@ -1,93 +1,76 @@
-import { Blocks, Briefcase, Code, } from "lucide-react"
-
 export const AboutSection = () => {
     return (
-        <section id="about" className="py-24 px-4 relative">
-            <div className="container mx-auto max-w-5xl">
-                <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-                    About <span className="text-primary"> Me</span>
+        <section id="about" className="py-45 px-4 relative">
+            <div className="container mx-auto max-w-4xl">
+                <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">
+                    About <span className="text-primary">Me</span>
                 </h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-
-                    {/* Photo */}
-                    <img src="/Portrait.png" alt="My Portrait" />
-
-                    {/* Skills List
-                    <div className="grid grid-cols-1 gap-6">
-                        <div className="gradient-border p-6 card-hover">
-                            <div className="flex items-start gap-4">
-                                <div className="p-3 rounded-full bg-primary/19">
-                                    <Code className="h-6 w-6 text-primary"/>
-                                </div>
-                                <div className="text-left">
-                                    <h4 className="font-semibold text-lg">Web Development</h4>
-                                    <p className="text-muted-foreground">
-                                        I create responsive Web applications using React and Django.
-                                    </p>
-                                </div>
-                            </div>
+                {/* Clean two-column stat + text layout */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start mb-14">
+                    {/* Left: quick facts */}
+                    <div className="space-y-8">
+                        <div className="about-stat-card">
+                            <span className="text-3xl font-bold text-primary">2nd</span>
+                            <p className="text-sm text-muted-foreground mt-1">Year CS student at USF</p>
                         </div>
-                        <div className="gradient-border p-6 card-hover">
-                            <div className="flex items-start gap-4">
-                                <div className="p-3 rounded-full bg-primary/19">
-                                    <Blocks className="h-6 w-6 text-primary"/>
-                                </div>
-                                <div className="text-left">
-                                    <h4 className="font-semibold text-lg">Blockchain</h4>
-                                    <p className="text-muted-foreground">
-                                        I'm inspired and made research on Blockchain technology.
-                                    </p>
-                                </div>
-                            </div>
+                        <div className="about-stat-card">
+                            <span className="text-3xl font-bold text-primary">6+</span>
+                            <p className="text-sm text-muted-foreground mt-1">Languages in deployed applications</p>
                         </div>
-                        <div className="gradient-border p-6 card-hover">
-                            <div className="flex items-start gap-4">
-                                <div className="p-3 rounded-full bg-primary/19">
-                                    <Briefcase className="h-6 w-6 text-primary"/>
-                                </div>
-                                <div className="text-left">
-                                    <h4 className="font-semibold text-lg">Projects</h4>
-                                    <p className="text-muted-foreground">
-                                        I love creating programming projects to develop my technical skills
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
-
-
-                    {/* About me Text */}
-                    <div className="space-y-6">
-                        <h3 className="text-2xl font-semibold">Passionate Computer Science student</h3>
-                        <p className="text-muted-foreground">I have experience in software and web development, 
-                            data science, and AI. In particular, I am very interested on 
-                            web/mobile app development and I am passionate about UX Design. I also enjoy learning
-                            about blockchain and its impact on sustainable energy solutions.
-                        </p>
-                        <p className="text-muted-foreground">
-                            My journey so far has been defined by learning through building. 
-                            I have taken every opportunity to deepen my practical skills and 
-                            developing challenging programming projects while being
-                            part of big organizations - such as BRASA Connect. From Python, Javascript, 
-                            Typescript, Django, and React to Flutter, I am eager to keep expanding my 
-                            technical abilities.
-                        </p>
-
-                        <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-                            <a href="#contact" className="cosmic-button">
-                                Contact me
-                            </a>
-                            <a href="/TarikResume.pdf" 
-                            className="px-6 py-2 rounded-full border border-primary
-                                       text-primary hover:bg-primary/10 transition-colors duration-300"
-                            download>
-                                Download my Resume
-                            </a>
+                        <div className="about-stat-card">
+                            <span className="text-3xl font-bold text-primary">1</span>
+                            <p className="text-sm text-muted-foreground mt-1">Hackathon Win</p>
                         </div>
                     </div>
 
-                    
+                    {/* Right: narrative, broken into short digestible chunks */}
+                    <div className="md:col-span-2 space-y-6">
+                        <p className="text-foreground/90 text-lg leading-relaxed font-medium">
+                            Passionate Computer Science student that loves building things that actually matter
+                        </p>
+
+                        <div className="space-y-4 text-muted-foreground leading-relaxed">
+                            <p>
+                                I focus on <span className="text-foreground font-medium">software engineering</span> and care deeply about web & mobile development as well as UX Design - the craft of making software feel effortless
+                            </p>
+                            <p>
+                                This summer, I will be joining <span className="text-foreground font-medium">BTG Pactual</span> as a Summer Intern, where I will be developing my software development skills through the company's Mobile Development team
+                            </p>
+                            <p>
+                                My journey has been defined by learning through building. From Python and React to Flutter, I push my skills through real projects and organizations such as <span className="text-foreground font-medium">BRASA Connect</span>
+                            </p>
+                        </div>
+
+                        <div className="flex flex-wrap justify-center gap-3 pt-4">
+                            <a href="#contact" className="cosmic-button">
+                                Contact me
+                            </a>
+                            <a
+                                href="/TarikResume.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-6 py-2 rounded-full border border-primary/40 text-primary hover:bg-primary/10 transition-colors duration-300 text-sm font-medium"
+                            >
+                                View Resume
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Interest tags row */}
+                <div className="border-t border-border/40 pt-10">
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground mb-4 text-center">Interests</p>
+                    <div className="flex flex-wrap justify-center gap-2">
+                        {["Software Engineering", "Web Dev", "Mobile Dev", "AI", "UX Design", "Blockchain", "Data Science"].map((tag) => (
+                            <span
+                                key={tag}
+                                className="px-4 py-1.5 rounded-full text-sm border border-border/60 text-muted-foreground hover:border-primary/50 hover:text-primary transition-colors duration-200"
+                            >
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

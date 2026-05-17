@@ -1,8 +1,28 @@
 export const projects = [
     {
+        id: 13,
+        title: "NovaBay",
+        description: "An interactive GIS map with an AI-driven platform designed to help people and communities build safer housing in the Tampa Bay coastal region.",
+        image: "/projects/Project12.png",
+        tags: ["JavaScript", "Python", "React.js", "PLpgSQL"],
+        demoUrl: "#",
+        githubUrl: "https://github.com/TarikCO/NovaBay",
+        category: ["programming"],
+    },
+    {
+        id: 12,
+        title: "RentEscrow",
+        description: "A Blockhain-based Escrow system that allows for international students to make secure rent payments.",
+        image: "/projects/Project11.png",
+        tags: ["Python", "Solidity", "React.js", "JavaScript"],
+        demoUrl: "#",
+        githubUrl: "https://github.com/TarikCO/RentEscrow",
+        category: ["programming"],
+    },
+    {
         id: 10,
         title: "BRASA Connect Webapp",
-        description: "Responsible for developing the Webapp of BRASA Connect's 5th Edition",
+        description: "Responsible for developing the Webapp of BRASA Connect's 5th Edition.",
         image: "/projects/Project10.png",
         tags: ["Flutter", "Dart", "Firebase"],
         demoUrl: "https://web-app-eight-indol.vercel.app/",
@@ -20,16 +40,6 @@ export const projects = [
         category: ["programming", "other"],
     },
     {
-        id: 2,
-        title: "Geography Quiz",
-        description: "Designed and developed a geography quiz web application to engage 150+ children and students, improving their geographical knowledge and critical thinking skills.",
-        image: "/projects/Project2.PNG",
-        tags: ["Django", "Python", "HTML/CSS", "JavaScript"],
-        demoUrl: "#",
-        githubUrl: "https://github.com/TarikCO/Geography-Quiz",
-        category: "programming"
-    },
-    {
         id: 5,
         title: "Free Food Newsletter",
         description: "Developed a script with AI and scraped data from 40+ events from the University of South Florida website that offered free food, improving event accessibility for students.",
@@ -40,6 +50,16 @@ export const projects = [
         category: "programming"
     },
     {
+        id: 2,
+        title: "Geography Quiz",
+        description: "Designed and developed a geography quiz web application to engage 150+ children and students, improving their geographical knowledge and critical thinking skills.",
+        image: "/projects/Project2.PNG",
+        tags: ["Django", "Python", "HTML/CSS", "JavaScript"],
+        demoUrl: "#",
+        githubUrl: "https://github.com/TarikCO/Geography-Quiz",
+        category: "programming"
+    },
+    {
         id: 6,
         title: "This Portfolio",
         description: "Designed and developed this portfolio using React.js and Tailwind CSS to showcase my projects, skills, and personal information.",
@@ -47,6 +67,16 @@ export const projects = [
         tags: ["React.js", "JavaScript", "Tailwind CSS", "HTML/CSS"],
         demoUrl: "#",
         githubUrl: "https://github.com/TarikCO/My-Portfolio",
+        category: "programming"
+    },
+    {
+        id: 1,
+        title: "Blockchain Program",
+        description: "Programmed a functional blockchain prototype to simulate this technology usage in peer-to-peer energy transactions.",
+        image: "/projects/Project1.PNG",
+        tags: ["TypeScript"],
+        demoUrl: "#",
+        githubUrl: "https://github.com/TarikCO/Blockchain-Project",
         category: "programming"
     },
     {
@@ -69,17 +99,6 @@ export const projects = [
         githubUrl: "https://github.com/TarikCO/Gym-App",
         category: "programming"
     },
-    {
-        id: 1,
-        title: "Blockchain Program",
-        description: "Programmed a functional blockchain prototype to simulate this technology usage in peer-to-peer energy transactions.",
-        image: "/projects/Project1.PNG",
-        tags: ["TypeScript"],
-        demoUrl: "#",
-        githubUrl: "https://github.com/TarikCO/Blockchain-Project",
-        category: "programming"
-    },
-   
     {
         id: 7,
         title: "Viable Energy Blockchain Research",

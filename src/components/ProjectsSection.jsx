@@ -1,120 +1,173 @@
 import { projects, categories } from "./projectsData"
-import { ArrowRight, ExternalLink, Github } from "lucide-react"
+import { ArrowRight, ExternalLink, Github, X } from "lucide-react"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
 
-
 export const ProjectsSection = () => {
-
-    // Make filter
     const [activeCategory, setActiveCategory] = useState("all")
+    const [selectedProject, setSelectedProject] = useState(null)
 
-    const filteredProjects = projects.filter((project) => activeCategory === "all" || project.category.includes(activeCategory))
+    const filteredProjects = projects.filter(
+        (p) => activeCategory === "all" || p.category.includes(activeCategory)
+    )
 
     return (
         <section id="projects" className="py-24 px-4 relative">
             <div className="container mx-auto max-w-5xl">
-
-                {/* Title */}
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center"> Featured
-                    <span className="text-primary"> Projects </span>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+                    Featured <span className="text-primary">Projects</span>
                 </h2>
-
-                <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-                    Here are some of my projects. Each one of them was carefully developed and
-                    programmed, valuing performance, efficiency, and user experience.
+                <p className="text-center text-muted-foreground mb-12 max-w-xl mx-auto text-sm">
+                    Each project was carefully developed valuing performance, efficiency, and user experience.
                 </p>
 
-
                 {/* Filter */}
-                <div className="flex flex-wrap justify-center gap-4 mb-12">
-                    {categories.map((category, key) => (
+                <div className="flex flex-wrap justify-center gap-3 mb-12">
+                    {categories.map((cat, k) => (
                         <button
-                            key={key}
-                            onClick={() => setActiveCategory(category)}
+                            key={k}
+                            onClick={() => setActiveCategory(cat)}
                             className={cn(
-                                "px-5 py-2 rounded-full transition-colors duration-300 capitalize card-border-light",
-                                activeCategory === category ? "bg-primary text-primary-foreground" :
-                                    "bg-secondary/70 text-foreground hover:bg-secondary"
+                                "px-5 py-2 rounded-full text-sm transition-all duration-300 capitalize",
+                                activeCategory === cat
+                                    ? "bg-primary text-primary-foreground shadow-[0_0_12px_rgba(2,164,255,0.35)]"
+                                    : "border border-border/60 text-muted-foreground hover:border-primary/40 hover:text-primary"
                             )}
                         >
-                            {category}
+                            {cat}
                         </button>
                     ))}
                 </div>
 
-
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {filteredProjects.map((project, key) => (
-                        <div
-                            key={key} className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover card-border-light"
+                {/* Project grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {filteredProjects.map((project) => (
+                        <button
+                            key={project.id}
+                            onClick={() => setSelectedProject(project)}
+                            className="group text-left bg-card rounded-xl overflow-hidden border border-border/40 hover:border-primary/40 transition-all duration-300 hover:shadow-[0_0_20px_rgba(2,164,255,0.1)] hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-primary/50"
                         >
-                            <div className="h-48 overflow-hidden">
-                                <img src={project.image}
+                            <div className="h-44 overflow-hidden bg-secondary/30 relative">
+                                <img
+                                    src={project.image}
                                     alt={project.title}
-                                    className="w-full h-full object-cover transition-transform 
-                                               duration-500 group-hover:scale-110" />
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-card/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                    <span className="text-xs text-primary font-medium tracking-wider uppercase">View details →</span>
+                                </div>
                             </div>
-
-
-                            {/* Title and Description */}
-                            <div className="p-6">
-                                <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
-                                <p className="text-muted-foreground text-sm mb-6">
+                            <div className="p-5">
+                                <h3 className="text-base font-semibold mb-2 group-hover:text-primary transition-colors">
+                                    {project.title}
+                                </h3>
+                                <p className="text-muted-foreground text-xs leading-relaxed line-clamp-2 mb-4">
                                     {project.description}
                                 </p>
-
-
-                                {/* Looping through tags */}
-                                <div className="flex flex-wrap gap-2 mb-4">
-                                    {project.tags.map((tag) => (
-                                        <span className="px-3 py-1 text-s font-medium border border-primary
-                                                rounded-full bg-secondary text-secondary-foreground">
+                                <div className="flex flex-wrap gap-1.5">
+                                    {project.tags.slice(0, 3).map((tag) => (
+                                        <span
+                                            key={tag}
+                                            className="px-2.5 py-0.5 text-xs rounded-full border border-primary/25 text-primary/80 bg-primary/5"
+                                        >
                                             {tag}
                                         </span>
                                     ))}
-                                </div>
-
-
-                                {/* Links */}
-                                <div className="flex justify-center space-x-3">
-                                    {project.demoUrl && project.demoUrl !== "#" && (
-                                        <a
-                                            href={project.demoUrl}
-                                            target="_blank"
-                                            className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                                        >
-                                            <ExternalLink size={20} />
-                                        </a>
-                                    )}
-                                    {project.githubUrl && project.githubUrl !== "#" && (
-                                        <a
-                                            href={project.githubUrl}
-                                            target="_blank"
-                                            className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                                        >
-                                            <Github size={20} />
-                                        </a>
+                                    {project.tags.length > 3 && (
+                                        <span className="px-2.5 py-0.5 text-xs rounded-full border border-border/40 text-muted-foreground">
+                                            +{project.tags.length - 3}
+                                        </span>
                                     )}
                                 </div>
-
-
                             </div>
-                        </div>
+                        </button>
                     ))}
                 </div>
 
-
-                {/* GitHub Button */}
                 <div className="text-center mt-12">
-                    <a href="https://github.com/TarikCO"
+                    <a
+                        href="https://github.com/TarikCO"
                         className="cosmic-button w-fit flex items-center mx-auto gap-2"
-                        target="_blank">
+                        target="_blank"
+                    >
                         Check my GitHub <ArrowRight size={16} />
                     </a>
                 </div>
             </div>
+
+            {/* Project Modal */}
+            {selectedProject && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm"
+                    onClick={() => setSelectedProject(null)}
+                >
+                    <div
+                        className="bg-card border border-border/60 rounded-2xl max-w-4xl w-full max-h-[92vh] overflow-y-auto shadow-2xl"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {/* Modal image */}
+                        <div className="h-56 md:h-72 overflow-hidden rounded-t-2xl relative">
+                            <img
+                                src={selectedProject.image}
+                                alt={selectedProject.title}
+                                className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
+                            <button
+                                onClick={() => setSelectedProject(null)}
+                                className="absolute top-4 right-4 p-2 rounded-full bg-background/70 text-foreground hover:text-primary transition-colors"
+                            >
+                                <X size={18} />
+                            </button>
+                        </div>
+
+                        {/* Modal content */}
+                        <div className="p-8">
+                            <h3 className="text-2xl font-bold mb-3">{selectedProject.title}</h3>
+                            <p className="text-muted-foreground leading-relaxed mb-6">
+                                {selectedProject.description}
+                            </p>
+
+                            {selectedProject.tags.length > 0 && (
+                                <div className="mb-6">
+                                    <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Tech Stack</p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {selectedProject.tags.map((tag) => (
+                                            <span
+                                                key={tag}
+                                                className="px-3 py-1 text-sm rounded-full border border-primary/30 text-primary/90 bg-primary/8"
+                                            >
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
+                            <div className="flex gap-3 pt-2">
+                                {selectedProject.demoUrl && selectedProject.demoUrl !== "#" && (
+                                    <a
+                                        href={selectedProject.demoUrl}
+                                        target="_blank"
+                                        className="flex items-center gap-2 px-5 py-2 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:shadow-[0_0_12px_rgba(2,164,255,0.4)] transition-all duration-300"
+                                    >
+                                        <ExternalLink size={15} /> Live Demo
+                                    </a>
+                                )}
+                                {selectedProject.githubUrl && selectedProject.githubUrl !== "#" && (
+                                    <a
+                                        href={selectedProject.githubUrl}
+                                        target="_blank"
+                                        className="flex items-center gap-2 px-5 py-2 rounded-full border border-border/60 text-sm font-medium hover:border-primary/40 hover:text-primary transition-all duration-300"
+                                    >
+                                        <Github size={15} /> View Code
+                                    </a>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </section>
     )
 }
