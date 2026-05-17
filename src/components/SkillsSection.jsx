@@ -2,10 +2,18 @@ import { useState, useEffect, useRef } from "react"
 import { cn } from "@/lib/utils"
 
 const skills = [
+<<<<<<< HEAD
     { name: "HTML/CSS", level: 90, category: "frontend" },
     { name: "JavaScript", level: 70, category: "frontend" },
     { name: "TypeScript", level: 80, category: "frontend" },
     { name: "Dart", level: 90, category: "frontend" },
+=======
+    {name: "HTML/CSS", level: 100, category: "frontend"},
+    {name: "JavaScript", level: 95, category: "frontend"},
+    {name: "React", level: 95, category: "frontend"},
+    {name: "Tailwind CSS", level: 80, category: "frontend"},
+    {name: "TypeScript", level: 80, category: "frontend"},
+>>>>>>> 233c07985f4420a7015fb9ec99db6bcaa588e52e
 
     { name: "Python", level: 90, category: "backend" },
     { name: "Node.js", level: 80, category: "backend" },
