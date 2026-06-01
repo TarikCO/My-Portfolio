@@ -1,0 +1,21 @@
+[33mcommit b3d9265096dd2dc5b80fd6bbd59d0d7636305963[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Tarik Castro <tarik.castro.o@gmail.com>
+Date:   Mon Jun 1 13:27:45 2026 -0300
+
+    New changes
+
+package-lock.json
+package.json
+src/App.jsx
+src/assets/gravity-stars.tsx
+src/components/AboutSection.jsx
+src/components/ContactSection.jsx
+src/components/Footer.jsx
+src/components/HeroSection.jsx
+src/components/Navbar.jsx
+src/components/ProjectsSection.jsx
+src/components/SkillsSection.jsx
+src/components/projectsData.js
+src/context/NavigationContext.jsx
+src/index.css
+src/pages/Home.jsx

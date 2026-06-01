@@ -7,6 +7,8 @@ type MouseGravity = 'attract' | 'repel';
 type GlowAnimation = 'instant' | 'ease' | 'spring';
 type StarsInteractionType = 'bounce' | 'merge';
 
+// Hello World
+
 type GravityStarsProps = {
   starsCount?: number;
   starsSize?: number;
