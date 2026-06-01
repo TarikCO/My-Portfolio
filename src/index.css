@@ -185,10 +185,10 @@
 }
 
 .animate-trace-rect1 {
-  animation: trace-rect1 11s linear infinite;
+  animation: trace-rect1 9s linear infinite;
 }
 .animate-trace-rect2 {
-  animation: trace-rect2 12s linear infinite;
+  animation: trace-rect2 10s linear infinite;
 }
 
 /* About stat cards */

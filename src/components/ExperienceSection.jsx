@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 // ─── Experience data ──────────────────────────────────────────────────────────
 const experiences = [
     {
-        role: "Software Engineer Intern",
+        role: "Mobile Flutter ",
         company: "Tech Company",
         date: "May 2025 – Aug 2025",
         location: "San Francisco, CA",
@@ -22,24 +22,7 @@ const experiences = [
             "Conducting research on machine-learning approaches to automated code review. Implemented a fine-tuned LLM pipeline that classifies code-smell patterns with 91% accuracy on a custom benchmark dataset.",
         tags: ["Python", "PyTorch", "NLP", "Git"],
     },
-    {
-        role: "Hackathon Winner — BullHacks",
-        company: "USF College of Engineering",
-        date: "Oct 2024",
-        location: "Tampa, FL",
-        description:
-            "Led a 4-person team to first place out of 32 teams. Built a real-time disaster-response coordination app with live map overlays, WebSocket incident feeds, and an AI triage assistant — all in 24 hours.",
-        tags: ["React", "Socket.IO", "OpenAI API", "Leaflet"],
-    },
-    {
-        role: "Freelance Mobile Developer",
-        company: "Self-employed",
-        date: "Jun 2023 – Dec 2024",
-        location: "Remote",
-        description:
-            "Designed and shipped three cross-platform mobile apps for small-business clients, handling the full cycle from wireframing and UX design to App Store / Play Store deployment.",
-        tags: ["React Native", "Expo", "Firebase", "Figma"],
-    },
+   
 ]
 
 // ─── ExperienceSection ────────────────────────────────────────────────────────
@@ -124,7 +107,7 @@ export const ExperienceSection = () => {
         <section
             id="experience"
             ref={sectionRef}
-            className="py-24 px-4 bg-background"
+            className="py-34 px-4 bg-background"
             aria-label="Professional experience"
         >
             <div className="container mx-auto max-w-5xl">

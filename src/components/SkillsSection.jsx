@@ -174,7 +174,7 @@ export const SkillsSection = () => {
         .sort((a, b) => b.level - a.level)
 
     return (
-        <section id="skills" className="py-43 px-4 relative bg-background">
+        <section id="skills" className="py-35 px-4 relative bg-background">
             <div className="container mx-auto max-w-5xl">
                 <motion.h2
                     className="text-3xl md:text-4xl font-bold mb-4 text-center"
@@ -207,6 +207,7 @@ export const SkillsSection = () => {
                         <button
                             key={k}
                             onClick={() => setActiveCategory(cat)}
+                            style={{ cursor: "pointer" }}
                             className={cn(
                                 "px-5 py-2 rounded-full text-sm transition-all duration-300 capitalize",
                                 activeCategory === cat

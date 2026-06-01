@@ -8,6 +8,7 @@ export const Footer = () => (
 
         <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            style={{ cursor: "pointer" }}
             className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-colors"
             aria-label="Back to top"
         >

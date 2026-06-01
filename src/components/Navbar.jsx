@@ -95,6 +95,7 @@ export const Navbar = () => {
                             <button
                                 key={item.section}
                                 onClick={() => handleNav(item.section)}
+                                style={{ cursor: "pointer" }}
                                 className={cn(
                                     "relative px-3.5 py-1.5 rounded-full text-sm transition-all duration-300",
                                     activeSection === item.section
@@ -113,6 +114,7 @@ export const Navbar = () => {
                         <button
                             onClick={toggleTheme}
                             className="flex items-center justify-center h-7 w-7 rounded-full text-foreground/45 hover:text-foreground/80 transition-colors duration-300"
+                            style={{ cursor: "pointer" }}
                             aria-label="Toggle theme"
                         >
                             {isDark ? <Sun size={13} className="text-yellow-300" /> : <Moon size={13} className="text-blue-900" />}

@@ -20,7 +20,7 @@ const tags = ["Software Engineering", "Web Dev", "Mobile Dev", "AI", "UX Design"
 
 export const AboutSection = () => {
     return (
-        <section id="about" className="py-45 px-4 relative">
+        <section id="about" className="py-35 px-4 relative">
             <div className="container mx-auto max-w-4xl">
                 <motion.h2
                     className="text-3xl md:text-4xl font-bold mb-16 text-center"
