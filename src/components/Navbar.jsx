@@ -3,11 +3,12 @@ import { Menu, Moon, Sun, X } from "lucide-react"
 import { useEffect, useState } from "react"
 
 const navItems = [
-    { name: "Home",     section: "hero"     },
-    { name: "About",    section: "about"    },
-    { name: "Skills",   section: "skills"   },
-    { name: "Projects", section: "projects" },
-    { name: "Contact",  section: "contact"  },
+    { name: "Home",       section: "hero"       },
+    { name: "About",      section: "about"      },
+    { name: "Skills",     section: "skills"     },
+    { name: "Projects",   section: "projects"   },
+    { name: "Experience", section: "experience" },
+    { name: "Contact",    section: "contact"    },
 ]
 
 const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
@@ -71,7 +72,7 @@ export const Navbar = () => {
                     {/* Logo — quiet, name-first */}
                     <button
                         onClick={() => handleNav("hero")}
-                        className="group flex items-center gap-2 select-none"
+                        className="group flex translate-x-[-200px] items-center gap-2 select-none"
                     >
                         <span className="flex h-7 w-7 items-center justify-center rounded-md bg-foreground/6 text-foreground/35 text-xs font-bold tracking-wide transition-all duration-300 group-hover:bg-primary/12 group-hover:text-primary">
                             TO
@@ -84,7 +85,7 @@ export const Navbar = () => {
                     {/* Floating pill — desktop, toggle included */}
                     <nav
                         className={cn(
-                            "hidden md:flex items-center gap-0.5 rounded-full px-1.5 py-1 transition-all duration-500",
+                            "hidden md:flex translate-x-[200px] items-center gap-0.5 rounded-full px-2.5 py-1 transition-all duration-500",
                             isScrolled
                                 ? "bg-background/65 backdrop-blur-xl border border-border/50 shadow-md shadow-black/15"
                                 : "bg-background/20 backdrop-blur-md border border-white/8"
@@ -102,10 +103,6 @@ export const Navbar = () => {
                                 )}
                             >
                                 {item.name}
-                                {/* Subtle dot indicator — replaces the loud solid fill */}
-                                {activeSection === item.section && (
-                                    <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary/70" />
-                                )}
                             </button>
                         ))}
 

@@ -106,7 +106,6 @@
   }
 
   html {
-    @apply scroll-smooth;
     overflow-x: hidden;
     scrollbar-width: none;
   }
