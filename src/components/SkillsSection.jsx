@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 import { cn } from "@/lib/utils"
+import { motion } from "framer-motion"
 
 const skills = [
     { name: "HTML/CSS", level: 90, category: "frontend" },
@@ -175,15 +176,33 @@ export const SkillsSection = () => {
     return (
         <section id="skills" className="py-43 px-4 relative bg-secondary/20">
             <div className="container mx-auto max-w-5xl">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+                <motion.h2
+                    className="text-3xl md:text-4xl font-bold mb-4 text-center"
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.4 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                >
                     My <span className="text-primary">Skills</span>
-                </h2>
-                <p className="text-center text-muted-foreground mb-12 text-sm max-w-md mx-auto">
+                </motion.h2>
+                <motion.p
+                    className="text-center text-muted-foreground mb-12 text-sm max-w-md mx-auto"
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.4 }}
+                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+                >
                     A visual representation of some of my skills in different areas
-                </p>
+                </motion.p>
 
                 {/* Category filter */}
-                <div className="flex flex-wrap justify-center gap-3 mb-12">
+                <motion.div
+                    className="flex flex-wrap justify-center gap-3 mb-12"
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.4 }}
+                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.15 }}
+                >
                     {categories.map((cat, k) => (
                         <button
                             key={k}
@@ -198,7 +217,7 @@ export const SkillsSection = () => {
                             {cat}
                         </button>
                     ))}
-                </div>
+                </motion.div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     {/* Radar chart */}

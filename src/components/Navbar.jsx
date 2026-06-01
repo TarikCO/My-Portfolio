@@ -1,66 +1,73 @@
 import { cn } from "@/lib/utils"
 import { Menu, X } from "lucide-react";
-import { useEffect, useState } from "react"
+import { useState } from "react"
+import { useNavigation } from "../context/NavigationContext"
 
 const navItems = [
-    {name: "Home", href: "#hero"},
-    {name: "About", href: "#about"},
-    {name: "Skills", href: "#skills"},
-    {name: "Projects", href: "#projects"},
-    {name: "Contact", href: "#contact"},
+    { name: "Home",     section: "hero"     },
+    { name: "About",    section: "about"    },
+    { name: "Skills",   section: "skills"   },
+    { name: "Projects", section: "projects" },
+    { name: "Contact",  section: "contact"  },
 ]
 
 export const Navbar = () => {
-    const [isScrolled, setIsScrolled] = useState(false)
+    const { current, navigateTo, animating } = useNavigation()
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.screenY > 10)
-        }
-    
-        window.addEventListener("scroll", handleScroll)
-        return () => window.removeEventListener("scroll", handleScroll)
-    }, [])
+    const isScrolled = current !== "hero"
+
+    const handleNav = (section) => {
+        navigateTo(section)
+        setIsMenuOpen(false)
+    }
 
     return (
         <nav className={cn(
             "fixed w-full z-40 transition-all duration-300",
             isScrolled
-                ? "py-3 bg-background/80 md:bg-transparent backdrop-blur-md shadow-xs"
-                : "py-5 bg-background/80 md:bg-transparent"
+                ? "py-3 bg-background/18 backdrop-blur-md shadow-xs"
+                : "py-5 bg-transparent"
         )}>
 
             <div className="container flex items-center justify-between">
-            
-                <a className="text-xl font-bold text-primary flex items-center" href="#hero">
+
+                <button
+                    onClick={() => handleNav("hero")}
+                    disabled={animating}
+                    className="text-xl font-bold text-primary flex items-center disabled:opacity-70"
+                >
                     <span className="relative z-10">
                         <span className="text-glow text-foreground"> Tarik Oliveira </span>{" "}
                         Portfolio
                     </span>
-                </a>
+                </button>
 
                 {/* Desktop Navbar */}
-
                 <div className="hidden md:flex space-x-8">
                     {navItems.map((item, key) => (
-                <a
-                    key={key}
-                    href={item.href}
-                    className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                >
-                    {item.name}
-                </a>
-                ))}
+                        <button
+                            key={key}
+                            onClick={() => handleNav(item.section)}
+                            disabled={animating}
+                            className={cn(
+                                "transition-colors duration-300 disabled:opacity-50",
+                                current === item.section
+                                    ? "text-primary"
+                                    : "text-foreground/80 hover:text-primary"
+                            )}
+                        >
+                            {item.name}
+                        </button>
+                    ))}
                 </div>
 
-                {/* Mobile Navbar */}
-
+                {/* Mobile Hamburger */}
                 <button
                     onClick={() => setIsMenuOpen((prev) => !prev)}
                     className="md:hidden p-2 text-foreground z-50"
                     aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
-                    >
+                >
                     {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
 
@@ -68,23 +75,27 @@ export const Navbar = () => {
                     className={cn(
                         "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
                         "transition-all duration-300 md:hidden",
-                    isMenuOpen
-                        ? "opacity-100 pointer-events-auto"
-                        : "opacity-0 pointer-events-none"
+                        isMenuOpen
+                            ? "opacity-100 pointer-events-auto"
+                            : "opacity-0 pointer-events-none"
                     )}
                 >
-
                     <div className="flex flex-col space-y-8 text-xl">
                         {navItems.map((item, key) => (
-                    <a
-                        key={key}
-                        href={item.href}
-                        className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                        onClick={() => setIsMenuOpen(false)}
-                    >
-                        {item.name}
-                    </a>
-                    ))}
+                            <button
+                                key={key}
+                                onClick={() => handleNav(item.section)}
+                                disabled={animating}
+                                className={cn(
+                                    "transition-colors duration-300 disabled:opacity-50",
+                                    current === item.section
+                                        ? "text-primary"
+                                        : "text-foreground/80 hover:text-primary"
+                                )}
+                            >
+                                {item.name}
+                            </button>
+                        ))}
                     </div>
                 </div>
             </div>

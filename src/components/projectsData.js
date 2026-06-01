@@ -1,5 +1,15 @@
 export const projects = [
     {
+        id: 14,
+        title: "Drawing Shop",
+        description: "A flutter app for selling my portrait drawings. It features a user-friendly interface with a cart shopping system.",
+        image: "/projects/Project14.png",
+        tags: ["Flutter", "Dart"],
+        demoUrl: "#",
+        githubUrl: "",
+        category: ["programming"],
+    },
+    {
         id: 13,
         title: "NovaBay",
         description: "An interactive GIS map with an AI-driven platform designed to help people and communities build safer housing in the Tampa Bay coastal region.",

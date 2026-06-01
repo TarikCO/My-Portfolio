@@ -1,6 +1,7 @@
 import { projects, categories } from "./projectsData"
 import { ArrowRight, ExternalLink, Github, X } from "lucide-react"
 import { useState } from "react"
+import { createPortal } from "react-dom"
 import { cn } from "@/lib/utils"
 
 export const ProjectsSection = () => {
@@ -95,8 +96,9 @@ export const ProjectsSection = () => {
                 </div>
             </div>
 
-            {/* Project Modal */}
-            {selectedProject && (
+            {/* Project Modal — rendered in document.body via portal so position:fixed
+                works correctly outside the CSS-transformed canvas ancestor */}
+            {selectedProject && createPortal(
                 <div
                     className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm"
                     onClick={() => setSelectedProject(null)}
@@ -166,7 +168,8 @@ export const ProjectsSection = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>,
+                document.body
             )}
         </section>
     )
