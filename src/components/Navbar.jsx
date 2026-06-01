@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils"
-import { Menu, X } from "lucide-react";
-import { useState } from "react"
-import { useNavigation } from "../context/NavigationContext"
+import { Menu, Moon, Sun, X } from "lucide-react"
+import { useEffect, useState } from "react"
 
 const navItems = [
     { name: "Home",     section: "hero"     },
@@ -11,94 +10,176 @@ const navItems = [
     { name: "Contact",  section: "contact"  },
 ]
 
-export const Navbar = () => {
-    const { current, navigateTo, animating } = useNavigation()
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
+const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
 
-    const isScrolled = current !== "hero"
+export const Navbar = () => {
+    const [isScrolled,    setIsScrolled]    = useState(false)
+    const [activeSection, setActiveSection] = useState("hero")
+    const [isMenuOpen,    setIsMenuOpen]    = useState(false)
+    const [isDark,        setIsDark]        = useState(true)
+
+    useEffect(() => {
+        setIsDark(!document.documentElement.classList.contains("light"))
+    }, [])
+
+    const toggleTheme = () => {
+        const nowLight = document.documentElement.classList.toggle("light")
+        localStorage.setItem("theme", nowLight ? "light" : "dark")
+        setIsDark(!nowLight)
+    }
+
+    useEffect(() => {
+        const onScroll = () => setIsScrolled(window.scrollY > 60)
+        window.addEventListener("scroll", onScroll, { passive: true })
+        return () => window.removeEventListener("scroll", onScroll)
+    }, [])
+
+    useEffect(() => {
+        const sections = navItems
+            .map(i => document.getElementById(i.section))
+            .filter(Boolean)
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) setActiveSection(entry.target.id)
+                })
+            },
+            { threshold: 0.4 }
+        )
+        sections.forEach(s => observer.observe(s))
+        return () => observer.disconnect()
+    }, [])
 
     const handleNav = (section) => {
-        navigateTo(section)
+        scrollTo(section)
         setIsMenuOpen(false)
     }
 
     return (
-        <nav className={cn(
-            "fixed w-full z-40 transition-all duration-300",
-            isScrolled
-                ? "py-3 bg-background/18 backdrop-blur-md shadow-xs"
-                : "py-5 bg-transparent"
-        )}>
+        <>
+            {/* ── Desktop navbar ──────────────────────────────────────────── */}
+            <header
+                className={cn(
+                    "fixed top-0 inset-x-0 z-40 transition-all duration-500",
+                    isScrolled
+                        ? "bg-gradient-to-b from-background/75 to-transparent pt-3 pb-6"
+                        : "pt-5 pb-0"
+                )}
+            >
+                <div className="container flex items-center justify-between">
 
-            <div className="container flex items-center justify-between">
+                    {/* Logo — quiet, name-first */}
+                    <button
+                        onClick={() => handleNav("hero")}
+                        className="group flex items-center gap-2 select-none"
+                    >
+                        <span className="flex h-7 w-7 items-center justify-center rounded-md bg-foreground/6 text-foreground/35 text-xs font-bold tracking-wide transition-all duration-300 group-hover:bg-primary/12 group-hover:text-primary">
+                            TO
+                        </span>
+                        <span className="text-sm font-medium text-foreground/65 transition-colors duration-300 group-hover:text-foreground/90">
+                            Tarik Oliveira
+                        </span>
+                    </button>
 
-                <button
-                    onClick={() => handleNav("hero")}
-                    disabled={animating}
-                    className="text-xl font-bold text-primary flex items-center disabled:opacity-70"
-                >
-                    <span className="relative z-10">
-                        <span className="text-glow text-foreground"> Tarik Oliveira </span>{" "}
-                        Portfolio
-                    </span>
-                </button>
-
-                {/* Desktop Navbar */}
-                <div className="hidden md:flex space-x-8">
-                    {navItems.map((item, key) => (
-                        <button
-                            key={key}
-                            onClick={() => handleNav(item.section)}
-                            disabled={animating}
-                            className={cn(
-                                "transition-colors duration-300 disabled:opacity-50",
-                                current === item.section
-                                    ? "text-primary"
-                                    : "text-foreground/80 hover:text-primary"
-                            )}
-                        >
-                            {item.name}
-                        </button>
-                    ))}
-                </div>
-
-                {/* Mobile Hamburger */}
-                <button
-                    onClick={() => setIsMenuOpen((prev) => !prev)}
-                    className="md:hidden p-2 text-foreground z-50"
-                    aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
-                >
-                    {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
-
-                <div
-                    className={cn(
-                        "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
-                        "transition-all duration-300 md:hidden",
-                        isMenuOpen
-                            ? "opacity-100 pointer-events-auto"
-                            : "opacity-0 pointer-events-none"
-                    )}
-                >
-                    <div className="flex flex-col space-y-8 text-xl">
-                        {navItems.map((item, key) => (
+                    {/* Floating pill — desktop, toggle included */}
+                    <nav
+                        className={cn(
+                            "hidden md:flex items-center gap-0.5 rounded-full px-1.5 py-1 transition-all duration-500",
+                            isScrolled
+                                ? "bg-background/65 backdrop-blur-xl border border-border/50 shadow-md shadow-black/15"
+                                : "bg-background/20 backdrop-blur-md border border-white/8"
+                        )}
+                    >
+                        {navItems.map((item) => (
                             <button
-                                key={key}
+                                key={item.section}
                                 onClick={() => handleNav(item.section)}
-                                disabled={animating}
                                 className={cn(
-                                    "transition-colors duration-300 disabled:opacity-50",
-                                    current === item.section
-                                        ? "text-primary"
-                                        : "text-foreground/80 hover:text-primary"
+                                    "relative px-3.5 py-1.5 rounded-full text-sm transition-all duration-300",
+                                    activeSection === item.section
+                                        ? "text-primary font-medium"
+                                        : "text-foreground/55 font-normal hover:text-foreground/85"
                                 )}
                             >
                                 {item.name}
+                                {/* Subtle dot indicator — replaces the loud solid fill */}
+                                {activeSection === item.section && (
+                                    <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary/70" />
+                                )}
                             </button>
                         ))}
-                    </div>
+
+                        {/* Divider */}
+                        <span className="w-px h-3.5 bg-border/50 mx-1 shrink-0" />
+
+                        {/* Theme toggle — lives inside the pill, no longer orphaned */}
+                        <button
+                            onClick={toggleTheme}
+                            className="flex items-center justify-center h-7 w-7 rounded-full text-foreground/45 hover:text-foreground/80 transition-colors duration-300"
+                            aria-label="Toggle theme"
+                        >
+                            {isDark ? <Sun size={13} className="text-yellow-300" /> : <Moon size={13} className="text-blue-900" />}
+                        </button>
+                    </nav>
+
+                    {/* Mobile hamburger */}
+                    <button
+                        onClick={() => setIsMenuOpen((p) => !p)}
+                        className={cn(
+                            "md:hidden flex items-center justify-center h-9 w-9 rounded-full border transition-all duration-300",
+                            isMenuOpen
+                                ? "bg-primary border-primary text-background"
+                                : "bg-background/40 backdrop-blur-md border-border/60 text-foreground hover:border-primary/60"
+                        )}
+                        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                    >
+                        {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
+                    </button>
                 </div>
+            </header>
+
+            {/* ── Mobile full-screen overlay ──────────────────────────────── */}
+            <div
+                className={cn(
+                    "fixed inset-0 z-30 md:hidden flex flex-col items-center justify-center gap-2",
+                    "bg-background/96 backdrop-blur-xl transition-all duration-400",
+                    isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+                )}
+            >
+                <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full bg-primary/8 blur-3xl pointer-events-none" />
+
+                <nav className="relative flex flex-col items-center gap-1 w-full px-8">
+                    {navItems.map((item, i) => (
+                        <button
+                            key={item.section}
+                            onClick={() => handleNav(item.section)}
+                            style={{ transitionDelay: isMenuOpen ? `${i * 60}ms` : "0ms" }}
+                            className={cn(
+                                "w-full max-w-xs flex items-center justify-between px-5 py-4 rounded-2xl text-lg font-semibold",
+                                "border transition-all duration-300",
+                                isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
+                                activeSection === item.section
+                                    ? "bg-primary/12 border-primary/35 text-primary"
+                                    : "bg-secondary/40 border-border/40 text-foreground/80 hover:border-primary/30 hover:text-foreground"
+                            )}
+                        >
+                            <span>{item.name}</span>
+                            {activeSection === item.section && (
+                                <span className="h-1.5 w-1.5 rounded-full bg-primary/70" />
+                            )}
+                        </button>
+                    ))}
+                </nav>
+
+                {/* Theme toggle in mobile overlay */}
+                <button
+                    onClick={toggleTheme}
+                    className="mt-4 flex items-center gap-2 text-sm text-foreground/50 hover:text-foreground/80 transition-colors duration-300"
+                >
+                    {isDark ? <Sun size={15} className="text-yellow-300" /> : <Moon size={15} className="text-blue-900" />}
+                    <span>{isDark ? "Light mode" : "Dark mode"}</span>
+                </button>
             </div>
-        </nav>
+        </>
     )
 }

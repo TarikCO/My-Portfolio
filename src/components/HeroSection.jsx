@@ -1,7 +1,7 @@
 import { ArrowDown } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
-import { GravityStarsBackground } from "../assets/gravity-stars"
-import { useNavigation } from "../context/NavigationContext"
+
+const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
 
 const useTypingEffect = (text, speed = 50, delay = 0) => {
     const [displayed, setDisplayed] = useState("")
@@ -30,8 +30,6 @@ const useTypingEffect = (text, speed = 50, delay = 0) => {
 }
 
 export const HeroSection = () => {
-    const { navigateTo } = useNavigation()
-
     // Feature 2 – aurora canvas ref
     const auroraRef = useRef(null)
     // Feature 3 – refs for hero section and diamond SVG
@@ -150,37 +148,18 @@ export const HeroSection = () => {
         <section
             id="hero"
             ref={heroRef}
-            className="relative min-h-screen flex items-center overflow-visible"
+            className="relative min-h-screen flex items-center overflow-hidden"
         >
-            {/* Feature 2: Aurora canvas — z-index 0, painted before stars so stars sit on top */}
+            {/* Feature 2: Aurora canvas */}
             <canvas
                 ref={auroraRef}
                 aria-hidden="true"
                 className="absolute inset-0 w-full h-full"
                 style={{ zIndex: 0, pointerEvents: "none" }}
             />
-            <GravityStarsBackground
-                className="absolute inset-0 z-0 text-primary/80"
-                starsCount={300}
-                starsSize={2.4}
-                starsOpacity={0.23}
-                glowIntensity={18}
-                glowAnimation="ease"
-                movementSpeed={0.15}
-                idleSpeedFactor={0.5}
-                mouseInfluence={180}
-                mouseGravity="attract"
-                gravityStrength={60}
-            />
 
             {/* Left content */}
             <div className="relative z-10 flex flex-col justify-center text-left px-8 md:px-16 lg:px-24 w-full md:w-1/2 py-32 md:py-0 left-20 bottom-10">
-                <div className="mb-6 opacity-0 animate-fade-in">
-                    <span className="text-xs font-semibold tracking-[0.25em] uppercase text-primary border border-primary/30 px-3 py-1.5 rounded-full bg-primary/5">
-                        Portfolio
-                    </span>
-                </div>
-
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6">
                     <span className="block text-foreground/90">
                         {line1.displayed}
@@ -200,11 +179,11 @@ export const HeroSection = () => {
 
                 {/* Feature 4: spring cubic-bezier entrance for CTA buttons */}
                 <div className="flex items-center gap-4 opacity-0 animate-spring-cta">
-                    <button onClick={() => navigateTo("projects")} className="cosmic-button">
+                    <button onClick={() => scrollTo("projects")} className="cosmic-button">
                         View my work
                     </button>
                     <button
-                        onClick={() => navigateTo("about")}
+                        onClick={() => scrollTo("about")}
                         className="text-sm text-muted-foreground hover:text-primary transition-colors underline underline-offset-4"
                     >
                         About me
@@ -212,7 +191,7 @@ export const HeroSection = () => {
                 </div>
 
                 <button
-                    onClick={() => navigateTo("about")}
+                    onClick={() => scrollTo("about")}
                     className="absolute -bottom-70 -left-14 flex flex-col items-center gap-2 animate-fade-in-delay-4 z-50 cursor-pointer"
                 >
                     <span className="text-xs tracking-widest text-muted-foreground uppercase">Explore</span>
@@ -227,7 +206,7 @@ export const HeroSection = () => {
                     ref={svgRef}
                     className="absolute inset-0 w-full h-full pointer-events-none z-0"
                     xmlns="http://www.w3.org/2000/svg"
-                    overflow="visible"
+                    overflow="hidden"
                 >
                     <rect
                         x="57%" y="-19%" width="650" height="620"

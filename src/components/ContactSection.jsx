@@ -13,7 +13,7 @@ const itemVariants = {
 
 export const ContactSection = () => {
     return (
-        <section id="contact" className="py-24 px-4 relative bg-secondary/30">
+        <section id="contact" className="py-24 px-4 relative bg-background">
             <div className="container mx-auto max-w-5xl">
                 <div className="text-lg p-10 py-10">
                     {/* Title */}
