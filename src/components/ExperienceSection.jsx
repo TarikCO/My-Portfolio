@@ -5,22 +5,49 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 // ─── Experience data ──────────────────────────────────────────────────────────
 const experiences = [
     {
-        role: "Mobile Flutter ",
-        company: "Tech Company",
-        date: "May 2025 – Aug 2025",
-        location: "San Francisco, CA",
+        role: "Flutter Developer Intern",
+        company: "BTG Pactual",
+        date: "June 2026 - Present",
+        location: "São Paulo, Brazil",
         description:
-            "Built and maintained full-stack features for a B2B SaaS platform. Reduced API response time by 35% through query optimisation and caching strategies. Collaborated with product and design on an internal tooling dashboard used by 200+ employees.",
-        tags: ["React", "Node.js", "PostgreSQL", "Redis"],
+            "Joining the Mobile Development team to build and enhance BTG's client-facing mobile applications. Contributing to both frontend Flutter code and backend services, while gaining experience in a fast-paced financial technology environment.",
+        tags: ["Flutter", "Dart"],
     },
     {
-        role: "Undergraduate Research Assistant",
-        company: "University of South Florida",
-        date: "Jan 2025 – Present",
+        role: "Head of Technology",
+        company: "BRASA Connect",
+        date: "May 2026 - Present",
         location: "Tampa, FL",
         description:
-            "Conducting research on machine-learning approaches to automated code review. Implemented a fine-tuned LLM pipeline that classifies code-smell patterns with 91% accuracy on a custom benchmark dataset.",
-        tags: ["Python", "PyTorch", "NLP", "Git"],
+            "Leading the technology development for BRASA Connect, the largest Brazilian student-led conference in Florida. Overseeing a team of developers to build and maintain the organization's web platform, while ensuring scalability and reliability.",
+        tags: ["React.js", "Node.js", "Flutter", "Firebase"],
+    },
+    {
+        role: "Student Experience Leader",
+        company: "USF World",
+        date: "Aug 2025 - Present",
+        location: "Tampa, FL",
+        description:
+            "Organizing events and initiatives to enhance the experience of international students at the University of South Florida. Developing the web presence for USF World, inovating ideas to better connect and support the international student community.",
+        tags: ["Event Planning", "Web Development"],
+    },
+    {
+        role: "Tech Analyst",
+        company: "BRASA Connect",
+        date: "Jul 2025 - May 2026",
+        location: "Tampa, FL",
+        description:
+            "Member of BRASA Connect's tech team, the largest Brazilian student-led conference in Florida. Responsible for developing and maintaining the conference's web application, as well as its database and internal tools.",
+        tags: ["Flutter", "Dart", "Firebase"],
+    },
+    {
+        role: "Professional Development Analyst",
+        company: "BRASA at USF",
+        date: "Jul 2025 - May 2026",
+        location: "Tampa, FL",
+        description:
+            "Part of the professional development team for BRASA at USF, a student organization that connects Brazilian students at the University of South Florida. Organized workshops, panels, and events focused on career development, while also contributing to the organization's web presence.",
+        tags: [],
     },
    
 ]
@@ -47,7 +74,7 @@ export const ExperienceSection = () => {
                     scrollTrigger: {
                         trigger: sectionRef.current,
                         start: "top 80%",
-                        end: "bottom 20%",
+                        end: "bottom 60%",
                         scrub: 0.6,
                     },
                 }
@@ -107,7 +134,7 @@ export const ExperienceSection = () => {
         <section
             id="experience"
             ref={sectionRef}
-            className="py-34 px-4 bg-background"
+            className="py-35 px-4 bg-background"
             aria-label="Professional experience"
         >
             <div className="container mx-auto max-w-5xl">
@@ -122,7 +149,7 @@ export const ExperienceSection = () => {
                     <div
                         ref={lineRef}
                         aria-hidden="true"
-                        className="hidden md:block absolute left-1/2 -translate-x-px top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-primary/25 to-transparent will-change-transform"
+                        className="hidden md:block absolute left-1/2 -translate-x-px top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-primary/70 to-transparent will-change-transform"
                     />
 
                     {/* Left edge line (mobile) */}
@@ -180,7 +207,7 @@ const ExperienceCard = forwardRef(({ exp, flipped }, ref) => (
     <article
         ref={ref}
         className={[
-            "group bg-card border border-card-border rounded-2xl p-6",
+            "group bg-card border border-card-border rounded-2xl p-6 md:text-left",
             "transition-all duration-300",
             "hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/6 hover:border-primary/25",
             flipped ? "md:text-right" : "",
@@ -200,7 +227,7 @@ const ExperienceCard = forwardRef(({ exp, flipped }, ref) => (
             <span>{exp.location}</span>
         </div>
 
-        <p className="text-sm text-foreground/70 leading-relaxed mb-4">
+        <p className="text-sm text-foreground/80 leading-relaxed mb-4">
             {exp.description}
         </p>
 

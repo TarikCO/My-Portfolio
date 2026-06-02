@@ -1,6 +1,6 @@
 import { projects, categories } from "./projectsData"
 import { ArrowRight, ExternalLink, Github, X } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { createPortal } from "react-dom"
 import { cn } from "@/lib/utils"
 
@@ -8,18 +8,33 @@ export const ProjectsSection = () => {
     const [activeCategory, setActiveCategory] = useState("all")
     const [selectedProject, setSelectedProject] = useState(null)
 
+    // Lock page scroll while modal is open
+    useEffect(() => {
+        if (selectedProject) {
+            document.body.style.overflow = "hidden"
+            window.__lenis?.stop()
+        } else {
+            document.body.style.overflow = ""
+            window.__lenis?.start()
+        }
+        return () => {
+            document.body.style.overflow = ""
+            window.__lenis?.start()
+        }
+    }, [selectedProject])
+
     const filteredProjects = projects.filter(
         (p) => activeCategory === "all" || p.category.includes(activeCategory)
     )
 
     return (
-        <section id="projects" className="py-34 px-4 relative">
+        <section id="projects" className="py-35 px-4 relative">
             <div className="container mx-auto max-w-5xl">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
                     Featured <span className="text-primary">Projects</span>
                 </h2>
                 <p className="text-center text-muted-foreground mb-12 max-w-xl mx-auto text-sm">
-                    Each project was carefully developed valuing performance, efficiency, and user experience.
+                    Each project was carefully developed with a lot of passion.
                 </p>
 
                 {/* Filter */}
@@ -32,7 +47,7 @@ export const ProjectsSection = () => {
                             className={cn(
                                 "px-5 py-2 rounded-full text-sm transition-all duration-300 capitalize",
                                 activeCategory === cat
-                                    ? "bg-primary text-primary-foreground shadow-[0_0_12px_rgba(2,164,255,0.35)]"
+                                    ? "bg-primary text-primary-foreground shadow-[0_0_12px_rgb(var(--glow-rgb)/0.35)]"
                                     : "border border-border/60 text-muted-foreground hover:border-primary/40 hover:text-primary"
                             )}
                         >
@@ -50,11 +65,11 @@ export const ProjectsSection = () => {
                             style={{ cursor: "pointer" }}
                             className="group text-left bg-card rounded-xl overflow-hidden border border-border/40 hover:border-primary/40 transition-all duration-300 hover:shadow-[0_0_20px_rgba(2,164,255,0.1)] hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-primary/50"
                         >
-                            <div className="h-44 overflow-hidden bg-secondary/30 relative">
+                            <div className="h-44 overflow-hidden bg-secondary/30 relative flex">
                                 <img
                                     src={project.image}
                                     alt={project.title}
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 block"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-card/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                                     <span className="text-xs text-primary font-medium tracking-wider uppercase">View details →</span>
@@ -64,9 +79,11 @@ export const ProjectsSection = () => {
                                 <h3 className="text-base font-semibold mb-2 group-hover:text-primary transition-colors">
                                     {project.title}
                                 </h3>
-                                <p className="text-muted-foreground text-xs leading-relaxed line-clamp-2 mb-4">
-                                    {project.description}
-                                </p>
+                                <div className="text-muted-foreground text-xs leading-relaxed mb-4">
+                                    <p className="line-clamp-3">
+                                        {project.description[0]}
+                                    </p>
+                                </div>
                                 <div className="flex flex-wrap gap-1.5">
                                     {project.tags.slice(0, 3).map((tag) => (
                                         <span
@@ -104,10 +121,12 @@ export const ProjectsSection = () => {
                 <div
                     className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm"
                     onClick={() => setSelectedProject(null)}
+                    onWheel={(e) => e.stopPropagation()}
                 >
                     <div
-                        className="bg-card border border-border/60 rounded-2xl max-w-4xl w-full max-h-[92vh] overflow-y-auto shadow-2xl"
+                        className="bg-card border border-border/60 rounded-2xl max-w-4xl w-full max-h-[92vh] overflow-y-auto no-scrollbar shadow-2xl"
                         onClick={(e) => e.stopPropagation()}
+                        onWheel={(e) => e.stopPropagation()}
                     >
                         {/* Modal image */}
                         <div className="h-56 md:h-72 overflow-hidden rounded-t-2xl relative">
@@ -128,9 +147,11 @@ export const ProjectsSection = () => {
                         {/* Modal content */}
                         <div className="p-8">
                             <h3 className="text-2xl font-bold mb-3">{selectedProject.title}</h3>
-                            <p className="text-muted-foreground leading-relaxed mb-6">
-                                {selectedProject.description}
-                            </p>
+                            <div className="text-muted-foreground leading-relaxed mb-6 flex flex-col gap-3">
+                                {selectedProject.description.map((paragraph, index) => (
+                                    <p key={index}>{paragraph}</p>
+                                ))}
+                            </div>
 
                             {selectedProject.tags.length > 0 && (
                                 <div className="mb-6">

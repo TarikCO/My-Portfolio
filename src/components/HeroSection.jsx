@@ -64,18 +64,24 @@ export const HeroSection = () => {
         ro.observe(canvas)
         resize()
 
-        // Three slowly drifting orbs – colours from spec, max opacity 0.25
-        const orbs = [
-            { hex: "#003060", bx: 0.25, by: 0.45, r: 420, sx: 0.18, sy: 0.24, px: 0.0, py: 1.2 },
-            { hex: "#001a40", bx: 0.72, by: 0.55, r: 340, sx: 0.13, sy: 0.17, px: 2.1, py: 0.4 },
-            { hex: "#004060", bx: 0.50, by: 0.25, r: 380, sx: 0.21, sy: 0.15, px: 1.0, py: 2.3 },
+        // Orb definitions — only positions/sizes; colour is resolved per-frame
+        // so theme switches are reflected immediately without restarting the effect.
+        const orbDefs = [
+            { bx: 0.25, by: 0.45, r: 420, sx: 0.18, sy: 0.24, px: 0.0, py: 1.2 },
+            { bx: 0.72, by: 0.55, r: 340, sx: 0.13, sy: 0.17, px: 2.1, py: 0.4 },
+            { bx: 0.50, by: 0.25, r: 380, sx: 0.21, sy: 0.15, px: 1.0, py: 2.3 },
         ]
+        const darkHex  = ["#003060", "#001a40", "#004060"]
+        const lightHex = ["#1b5e20", "#2e7d32", "#388e3c"]
 
         const draw = (ts) => {
             const t = ts / 1000
             const { width: w, height: h } = canvas
+            const isLight = document.documentElement.classList.contains("light")
+            const palette = isLight ? lightHex : darkHex
             ctx.clearRect(0, 0, w, h)
-            orbs.forEach(({ hex, bx, by, r, sx, sy, px, py }) => {
+            orbDefs.forEach(({ bx, by, r, sx, sy, px, py }, i) => {
+                const hex = palette[i]
                 const x  = bx * w + Math.sin(t * sx + px) * w * 0.14
                 const y  = by * h + Math.cos(t * sy + py) * h * 0.14
                 const rv = parseInt(hex.slice(1, 3), 16)
@@ -254,7 +260,7 @@ export const HeroSection = () => {
 
                 <p className="text-base md:text-lg text-muted-foreground max-w-md leading-relaxed mb-10 opacity-0 animate-fade-in-delay-5">
                     Computer Science student passionate about software
-                    and mobile development, as well as AI, UX Design, and Blockchain.
+                    and mobile development
                 </p>
 
                 {/* Feature 4: spring cubic-bezier entrance for CTA buttons */}
@@ -275,8 +281,8 @@ export const HeroSection = () => {
                     onClick={() => scrollTo("about")}
                     className="absolute -bottom-70 -left-14 flex flex-col items-center gap-2 animate-fade-in-delay-4 z-50 cursor-pointer"
                 >
-                    <span className="text-xs translate-y-[30px] tracking-widest text-muted-foreground uppercase">Explore</span>
-                    <ArrowDown className="h-4 w-4 translate-y-[30px] text-primary animate-bounce" />
+                    <span className="text-xs translate-y-[50px] tracking-widest text-muted-foreground uppercase">Explore</span>
+                    <ArrowDown className="h-4 w-4 translate-y-[50px] text-primary animate-bounce" />
                 </button>
             </div>
 

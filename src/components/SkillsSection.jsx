@@ -10,20 +10,22 @@ const skills = [
 
     { name: "Python", level: 90, category: "backend" },
     { name: "Node.js", level: 80, category: "backend" },
-    { name: "C", level: 65, category: "backend" },
-    { name: "C++", level: 60, category: "backend" },
-    { name: "SQL", level: 50, category: "backend" },
+    { name: "C", level: 55, category: "backend" },
+    { name: "C++", level: 50, category: "backend" },
+    { name: "SQL", level: 30, category: "backend" },
     
     { name: "Django", level: 50, category: "tools/frameworks" },
     { name: "Tailwind CSS", level: 70, category: "tools/frameworks" },
-    { name: "Firebase", level: 95, category: "tools/frameworks" },
-    { name: "Flutter", level: 95, category: "tools/frameworks" },
-    { name: "React", level: 95, category: "tools/frameworks" },
-    { name: "Figma", level: 70, category: "tools/frameworks" },
+    { name: "Firebase", level: 90, category: "tools/frameworks" },
+    { name: "Flutter", level: 90, category: "tools/frameworks" },
+    { name: "React", level: 90, category: "tools/frameworks" },
+    { name: "Figma", level: 50, category: "tools/frameworks" },
     { name: "Git", level: 90, category: "tools/frameworks" },
 ]
 
 const categories = ["all", "frontend", "backend", "tools/frameworks"]
+
+const isLight = document.documentElement.classList.contains("light")
 
 // Radar/Web chart component
 const RadarChart = ({ data }) => {
@@ -81,8 +83,12 @@ const RadarChart = ({ data }) => {
                             return `${p.x},${p.y}`
                         }).join(" ")}
                         fill="none"
-                        stroke="hsl(200,99%,45%)"
-                        strokeOpacity={0.08 + ri * 0.03}
+                        stroke="hsl(var(--primary))"
+                        strokeOpacity={
+                            isLight
+                                ? 0.20 + ri * 0.06
+                                : 0.08 + ri * 0.03
+                        }
                         strokeWidth="1"
                     />
                 )}
@@ -95,8 +101,12 @@ const RadarChart = ({ data }) => {
                             key={i}
                             x1={center} y1={center}
                             x2={outer.x} y2={outer.y}
-                            stroke="hsl(200,99%,45%)"
-                            strokeOpacity="0.1"
+                            stroke="hsl(var(--primary))"
+                            strokeOpacity={
+                                isLight
+                                    ? 0.20 + i * 0.06
+                                    : 0.08 + i * 0.03
+                            }
                             strokeWidth="1"
                         />
                     )
@@ -105,9 +115,9 @@ const RadarChart = ({ data }) => {
                 {/* Filled skill area */}
                 <polygon
                     points={animated ? polygonPoints : items.map(() => `${center},${center}`).join(" ")}
-                    fill="hsl(200,99%,45%)"
+                    fill="hsl(var(--primary))"
                     fillOpacity="0.12"
-                    stroke="hsl(200,99%,45%)"
+                    stroke="hsl(var(--primary))"
                     strokeWidth="2"
                     strokeOpacity="0.7"
                     style={{ transition: animated ? "points 1s cubic-bezier(.4,0,.2,1)" : "none" }}
@@ -119,7 +129,7 @@ const RadarChart = ({ data }) => {
                         key={i}
                         cx={p.x} cy={p.y}
                         r="4"
-                        fill="hsl(200,99%,45%)"
+                        fill="hsl(var(--primary))"
                         opacity={animated ? 1 : 0}
                         style={{ transition: `opacity 0.5s ease ${0.8 + i * 0.05}s` }}
                     />
@@ -211,7 +221,7 @@ export const SkillsSection = () => {
                             className={cn(
                                 "px-5 py-2 rounded-full text-sm transition-all duration-300 capitalize",
                                 activeCategory === cat
-                                    ? "bg-primary text-primary-foreground shadow-[0_0_12px_rgba(2,164,255,0.35)]"
+                                    ? "bg-primary text-primary-foreground shadow-[0_0_12px_rgb(var(--glow-rgb)/0.35)]"
                                     : "border border-border/60 text-muted-foreground hover:border-primary/40 hover:text-primary"
                             )}
                         >

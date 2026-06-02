@@ -13,6 +13,7 @@ gsap.registerPlugin(ScrollTrigger)
 // This ensures all scroll-based GSAP animations stay in sync with
 // Lenis's lerped scroll position rather than the native scroll position.
 const lenis = new Lenis()
+window.__lenis = lenis   // expose so modals can pause/resume smooth scroll
 
 lenis.on('scroll', ScrollTrigger.update)
 

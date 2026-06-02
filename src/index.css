@@ -74,23 +74,33 @@
 
     --border: 217 20% 22%;
     --hero-rect-stroke: 0 0% 100%;
+
+    --grid-color: 200 99% 45%;
+
+    --glow-rgb: 2 164 255;
   }
 
   .light {
-    --background: 210 30% 97%;
-    --foreground: 222 47% 11%;
+    --background: 120 8% 92%;
+    --foreground: 222 55% 8%;
 
-    --muted-foreground: 215 20% 45%;
-    --secondary: 214 25% 91%;
+    --muted-foreground: 215 18% 18%;
 
-    --card: 0 0% 100%;
-    --card-border: 214 32% 88%;
+    --secondary: 120 8% 84%;
 
-    --primary: 120 70% 45%;
-    --primary-foreground: 210 40% 98%;
-    
-    --border: 214 32% 88%;
+    --card: 120 8% 85%;
+    --card-border: 120 8% 68%;
+
+    --primary: 145 75% 34%;
+    --primary-foreground: 0 0% 100%;
+
+    --border: 120 8% 68%;
+
     --hero-rect-stroke: 0 0% 0%;
+
+    --grid-color: 145 75% 34%;
+
+    --glow-rgb: 34 197 94;
   }
 
   .light .card-border-light {
@@ -136,7 +146,7 @@
 
 @utility text-glow {
   @apply relative;
-  text-shadow: 0 0 10px rgba(2, 164, 255, 0.4);
+  text-shadow: 0 0 10px rgb(var(--glow-rgb) / 0.4);
 }
 
 @utility card-hover {
@@ -152,15 +162,20 @@
 
 @utility cosmic-button {
   @apply px-6 py-2.5 rounded-full bg-primary text-primary-foreground font-medium text-sm
-         transition-all duration-300 hover:shadow-[0_0_14px_rgba(2,164,255,0.45)]
-         hover:scale-105 active:scale-95;
+         transition-all duration-300 hover:scale-105 active:scale-95;
+
+  box-shadow: none;
+
+  &:hover {
+    box-shadow: 0 0 14px rgb(var(--glow-rgb) / 0.45);
+  }
 }
 
 /* Hero background grid */
 .hero-grid-bg {
   background-image:
-    linear-gradient(to right, hsl(200 99% 45% / 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, hsl(200 99% 45% / 0.04) 1px, transparent 1px);
+     linear-gradient(to right, hsl(var(--grid-color) / 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--grid-color) / 0.04) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
@@ -171,7 +186,7 @@
 
 .light .portrait-fade {
   background:
-    radial-gradient(350% 50% at 50% 100%, hsl(var(--background) / 0.95) 10%, transparent 00%),
+    radial-gradient(350% 50% at 50% 100%, hsl(var(--background) / 0.95) 10%, transparent 00%);
 }
 
 /* Animated streaks running along hero rects */

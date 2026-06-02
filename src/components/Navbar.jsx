@@ -88,7 +88,7 @@ export const Navbar = () => {
                             "hidden md:flex translate-x-[200px] items-center gap-0.5 rounded-full px-2.5 py-1 transition-all duration-500",
                             isScrolled
                                 ? "bg-background/65 backdrop-blur-xl border border-border/50 shadow-md shadow-black/15"
-                                : "bg-background/20 backdrop-blur-md border border-white/8"
+                                : "bg-background/20 backdrop-blur-md border border-border"
                         )}
                     >
                         {navItems.map((item) => (
