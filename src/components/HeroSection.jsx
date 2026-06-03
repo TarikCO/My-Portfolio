@@ -234,7 +234,7 @@ export const HeroSection = () => {
         <section
             id="hero"
             ref={heroRef}
-            className="relative min-h-screen flex items-center overflow-hidden"
+            className="relative min-h-screen flex items-center overflow-hidden max-w-full"
         >
             {/* Feature 2: Aurora canvas */}
             <canvas
@@ -245,8 +245,8 @@ export const HeroSection = () => {
             />
 
             {/* Left content */}
-            <div ref={contentRef} className="relative z-10 flex flex-col justify-center text-left px-8 md:px-16 lg:px-24 w-full md:w-1/2 py-32 md:py-0 left-20 bottom-10">
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6">
+            <div ref={contentRef} className="relative z-10 flex flex-col justify-center items-center md:items-start text-center md:text-left md:mt-0 mt-5 px-6 md:px-16 lg:px-24 w-full md:w-1/2 max-w-full py-28 md:py-0 left-0 bottom-0 md:left-20 md:bottom-10 max-md:overflow-hidden md:overflow-visible">
+                <h1 className="text-4xl min-[430px]:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6 max-w-full">
                     <span className="block text-foreground/90">
                         {line1.displayed}
                         {!line1.done && <span className="animate-blink">|</span>}
@@ -258,13 +258,20 @@ export const HeroSection = () => {
                     </span>
                 </h1>
 
-                <p className="text-base md:text-lg text-muted-foreground max-w-md leading-relaxed mb-10 opacity-0 animate-fade-in-delay-5">
+                <p className="text-base md:text-lg text-muted-foreground max-w-md leading-relaxed -mb-10 md:mb-10 opacity-0 animate-fade-in-delay-5">
                     Computer Science student passionate about software
                     and mobile development
                 </p>
 
+                <img
+                    src="/Portrait (2).png"
+                    alt="Tarik Oliveira"
+                    className="md:hidden portrait-image w-full max-w-[350px] h-auto object-contain object-top mb-8"
+                    onError={(e) => { e.target.style.display = 'none' }}
+                />
+
                 {/* Feature 4: spring cubic-bezier entrance for CTA buttons */}
-                <div className="flex items-center gap-4 opacity-0 animate-spring-cta">
+                <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 opacity-0 animate-spring-cta">
                     <button onClick={() => scrollTo("projects")} style={{ cursor: "pointer" }} className="cosmic-button">
                         View my work
                     </button>
@@ -279,7 +286,7 @@ export const HeroSection = () => {
 
                 <button
                     onClick={() => scrollTo("about")}
-                    className="absolute -bottom-70 -left-14 flex flex-col items-center gap-2 animate-fade-in-delay-4 z-50 cursor-pointer"
+                    className="hidden md:flex absolute -bottom-70 -left-14 flex-col items-center gap-2 animate-fade-in-delay-4 z-50 cursor-pointer"
                 >
                     <span className="text-xs translate-y-[50px] tracking-widest text-muted-foreground uppercase">Explore</span>
                     <ArrowDown className="h-4 w-4 translate-y-[50px] text-primary animate-bounce" />
@@ -287,7 +294,7 @@ export const HeroSection = () => {
             </div>
 
             {/* Right portrait area + SVG lines — single fade-in wrapper to preserve z-order */}
-            <div className="absolute inset-0 opacity-0 animate-fade-in-delay-1">
+            <div className="absolute inset-0 opacity-0 animate-fade-in-delay-1 overflow-hidden">
                 {/* SVG wrapper — GSAP scroll rotation targets this div;
                      svgRef keeps the mousemove tilt on the inner <svg> only */}
                 <div
@@ -305,6 +312,7 @@ export const HeroSection = () => {
                         <rect
                             ref={rect1Ref}
                             x="57%" y="-19%" width="650" height="620"
+                            className="hero-rect hero-rect-1"
                             transform="translate(20, 30) rotate(20, 305, 425)"
                             stroke="hsl(var(--hero-rect-stroke))"
                             strokeOpacity="0.6"
@@ -314,17 +322,18 @@ export const HeroSection = () => {
                         {/* Glowing blue streak running around rect 1 */}
                         <rect
                             x="57%" y="-19%" width="650" height="620"
+                            className="hero-rect hero-rect-1 animate-trace-rect1"
                             transform="translate(20, 30) rotate(20, 305, 425)"
                             stroke="hsl(var(--primary))"
                             strokeWidth="2"
                             fill="none"
                             strokeDasharray="40 2500"
-                            className="animate-trace-rect1"
                             style={{ filter: "drop-shadow(0 0 6px hsl(var(--primary) / 0.7))" }}
                         />
                         <rect
                             ref={rect2Ref}
                             x="40%" y="-18%" width="350" height="650"
+                            className="hero-rect hero-rect-2"
                             transform="translate(20, 30) rotate(45, 305, 425)"
                             stroke="hsl(var(--hero-rect-stroke))"
                             strokeOpacity="0.6"
@@ -334,12 +343,12 @@ export const HeroSection = () => {
                         {/* Glowing blue streak running around rect 2 */}
                         <rect
                             x="40%" y="-18%" width="350" height="650"
+                            className="hero-rect hero-rect-2 animate-trace-rect2"
                             transform="translate(20, 30) rotate(45, 305, 425)"
                             stroke="hsl(var(--primary))"
                             strokeWidth="2"
                             fill="none"
                             strokeDasharray="40 1960"
-                            className="animate-trace-rect2"
                             style={{ filter: "drop-shadow(0 0 6px hsl(var(--primary) / 0.7))" }}
                         />
                     </svg>

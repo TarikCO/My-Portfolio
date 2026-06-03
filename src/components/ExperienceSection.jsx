@@ -134,7 +134,7 @@ export const ExperienceSection = () => {
         <section
             id="experience"
             ref={sectionRef}
-            className="py-35 px-4 bg-background"
+            className="py-35 px-4 bg-background overflow-hidden"
             aria-label="Professional experience"
         >
             <div className="container mx-auto max-w-5xl">
@@ -158,12 +158,12 @@ export const ExperienceSection = () => {
                         className="md:hidden absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-primary/40 via-primary/20 to-transparent"
                     />
 
-                    <ol className="relative flex flex-col gap-14 md:gap-16">
+                    <ol className="relative flex flex-col gap-14 md:gap-16 max-w-full">
                         {experiences.map((exp, i) => {
                             const isLeft = i % 2 === 0
 
                             return (
-                                <li key={i} className="relative flex items-start">
+                                <li key={i} className="relative flex items-start w-full max-w-full">
 
                                     {/* Spacer — pushes right-side cards across the center */}
                                     {isLeft && (
@@ -182,6 +182,7 @@ export const ExperienceSection = () => {
                                         ref={(el) => (cardsRef.current[i] = el)}
                                         className={[
                                             "pl-10 md:pl-0 md:w-1/2 shrink-0 will-change-transform",
+                                            "w-full max-w-full min-w-0",
                                             isLeft ? "md:pl-10" : "md:pr-10",
                                         ].join(" ")}
                                     >
@@ -208,26 +209,27 @@ const ExperienceCard = forwardRef(({ exp, flipped }, ref) => (
         ref={ref}
         className={[
             "group bg-card border border-card-border rounded-2xl p-6 md:text-left",
+            "w-full max-w-full min-w-0 box-border break-words",
             "transition-all duration-300",
             "hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/6 hover:border-primary/25",
             flipped ? "md:text-right" : "",
         ].join(" ")}
     >
-        <h3 className="text-base font-semibold text-foreground leading-snug mb-0.5">
+        <h3 className="text-base font-semibold text-foreground leading-snug mb-0.5 break-words">
             {exp.role}
         </h3>
 
-        <p className="text-primary text-sm font-medium mb-3">
+        <p className="text-primary text-sm font-medium mb-3 break-words">
             {exp.company}
         </p>
 
-        <div className={`flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-foreground mb-4 ${flipped ? "md:justify-end" : ""}`}>
+        <div className={`flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-foreground mb-4 break-words ${flipped ? "md:justify-end" : ""}`}>
             <time>{exp.date}</time>
             <span aria-hidden="true" className="opacity-40">·</span>
             <span>{exp.location}</span>
         </div>
 
-        <p className="text-sm text-foreground/80 leading-relaxed mb-4">
+        <p className="text-sm text-foreground/80 leading-relaxed mb-4 break-words">
             {exp.description}
         </p>
 
@@ -238,7 +240,7 @@ const ExperienceCard = forwardRef(({ exp, flipped }, ref) => (
             {exp.tags.map((tag) => (
                 <li
                     key={tag}
-                    className="px-2.5 py-0.5 rounded-full text-xs bg-primary/8 text-primary/75 border border-primary/15 transition-colors duration-200 group-hover:border-primary/30"
+                    className="px-2.5 py-0.5 rounded-full text-xs bg-primary/8 text-primary/75 border border-primary/15 transition-colors duration-200 group-hover:border-primary/30 break-words"
                 >
                     {tag}
                 </li>

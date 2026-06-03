@@ -3,13 +3,13 @@ import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
 
 const skills = [
-    { name: "HTML/CSS", level: 90, category: "frontend" },
+    { name: "HTML/CSS", level: 85, category: "frontend" },
     { name: "JavaScript", level: 70, category: "frontend" },
     { name: "TypeScript", level: 80, category: "frontend" },
-    { name: "Dart", level: 90, category: "frontend" },
+    { name: "Dart", level: 80, category: "frontend" },
 
     { name: "Python", level: 90, category: "backend" },
-    { name: "Node.js", level: 80, category: "backend" },
+    { name: "Node.js", level: 75, category: "backend" },
     { name: "C", level: 55, category: "backend" },
     { name: "C++", level: 50, category: "backend" },
     { name: "SQL", level: 30, category: "backend" },
@@ -18,9 +18,9 @@ const skills = [
     { name: "Tailwind CSS", level: 70, category: "tools/frameworks" },
     { name: "Firebase", level: 90, category: "tools/frameworks" },
     { name: "Flutter", level: 90, category: "tools/frameworks" },
-    { name: "React", level: 90, category: "tools/frameworks" },
+    { name: "React", level: 85, category: "tools/frameworks" },
     { name: "Figma", level: 50, category: "tools/frameworks" },
-    { name: "Git", level: 90, category: "tools/frameworks" },
+    { name: "Git", level: 75, category: "tools/frameworks" },
 ]
 
 const categories = ["all", "frontend", "backend", "tools/frameworks"]

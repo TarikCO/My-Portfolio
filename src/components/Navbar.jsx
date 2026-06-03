@@ -39,16 +39,50 @@ export const Navbar = () => {
         const sections = navItems
             .map(i => document.getElementById(i.section))
             .filter(Boolean)
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) setActiveSection(entry.target.id)
-                })
-            },
-            { threshold: 0.4 }
-        )
-        sections.forEach(s => observer.observe(s))
-        return () => observer.disconnect()
+
+        let ticking = false
+
+        const updateActiveSection = () => {
+            const marker = window.innerHeight * 0.35
+            const sectionAtMarker = sections.find((section) => {
+                const rect = section.getBoundingClientRect()
+                return rect.top <= marker && rect.bottom >= marker
+            })
+
+            const mostVisibleSection = sections.reduce((best, section) => {
+                const rect = section.getBoundingClientRect()
+                const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0)
+
+                if (visibleHeight <= 0) return best
+                if (!best || visibleHeight > best.visibleHeight) {
+                    return { section, visibleHeight }
+                }
+
+                return best
+            }, null)
+
+            const current = sectionAtMarker || mostVisibleSection?.section
+
+            if (current) setActiveSection(current.id)
+            ticking = false
+        }
+
+        const onScrollOrResize = () => {
+            if (ticking) return
+            ticking = true
+            requestAnimationFrame(updateActiveSection)
+        }
+
+        updateActiveSection()
+        window.addEventListener("scroll", onScrollOrResize, { passive: true })
+        window.addEventListener("resize", onScrollOrResize)
+        window.__lenis?.on("scroll", onScrollOrResize)
+
+        return () => {
+            window.removeEventListener("scroll", onScrollOrResize)
+            window.removeEventListener("resize", onScrollOrResize)
+            window.__lenis?.off("scroll", onScrollOrResize)
+        }
     }, [])
 
     const handleNav = (section) => {
@@ -61,10 +95,10 @@ export const Navbar = () => {
             {/* ── Desktop navbar ──────────────────────────────────────────── */}
             <header
                 className={cn(
-                    "fixed top-0 inset-x-0 z-40 transition-all duration-500",
+                    "fixed top-0 inset-x-0 z-[60] max-md:py-4 max-md:bg-background/80 max-md:backdrop-blur-xl transition-all duration-500 overflow-x-clip",
                     isScrolled
-                        ? "bg-gradient-to-b from-background/75 to-transparent pt-3 pb-6"
-                        : "pt-5 pb-0"
+                        ? "md:bg-gradient-to-b md:from-background/75 md:to-transparent md:pt-3 md:pb-6"
+                        : "md:pt-5 md:pb-0"
                 )}
             >
                 <div className="container flex items-center justify-between">
@@ -72,7 +106,7 @@ export const Navbar = () => {
                     {/* Logo — quiet, name-first */}
                     <button
                         onClick={() => handleNav("hero")}
-                        className="group flex translate-x-[-200px] items-center gap-2 select-none"
+                        className="group flex items-center gap-2 select-none md:translate-x-[-200px]"
                     >
                         <span className="flex h-7 w-7 items-center justify-center rounded-md bg-foreground/6 text-foreground/35 text-xs font-bold tracking-wide transition-all duration-300 group-hover:bg-primary/12 group-hover:text-primary">
                             TO
@@ -131,6 +165,7 @@ export const Navbar = () => {
                                 : "bg-background/40 backdrop-blur-md border-border/60 text-foreground hover:border-primary/60"
                         )}
                         aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                        aria-expanded={isMenuOpen}
                     >
                         {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
                     </button>
@@ -139,15 +174,16 @@ export const Navbar = () => {
 
             {/* ── Mobile full-screen overlay ──────────────────────────────── */}
             <div
+                onClick={() => setIsMenuOpen(false)}
                 className={cn(
-                    "fixed inset-0 z-30 md:hidden flex flex-col items-center justify-center gap-2",
+                    "fixed inset-0 z-50 md:hidden flex flex-col items-center justify-center gap-2 overflow-hidden",
                     "bg-background/96 backdrop-blur-xl transition-all duration-400",
                     isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
                 )}
             >
                 <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full bg-primary/8 blur-3xl pointer-events-none" />
 
-                <nav className="relative flex flex-col items-center gap-1 w-full px-8">
+                <nav onClick={(event) => event.stopPropagation()} className="relative flex flex-col items-center gap-1 w-full px-6">
                     {navItems.map((item, i) => (
                         <button
                             key={item.section}
@@ -172,7 +208,10 @@ export const Navbar = () => {
 
                 {/* Theme toggle in mobile overlay */}
                 <button
-                    onClick={toggleTheme}
+                    onClick={(event) => {
+                        event.stopPropagation()
+                        toggleTheme()
+                    }}
                     className="mt-4 flex items-center gap-2 text-sm text-foreground/50 hover:text-foreground/80 transition-colors duration-300"
                 >
                     {isDark ? <Sun size={15} className="text-yellow-300" /> : <Moon size={15} className="text-blue-900" />}
