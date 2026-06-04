@@ -285,7 +285,8 @@
 
 .light .portrait-fade {
   background:
-    radial-gradient(350% 50% at 50% 100%, hsl(var(--background) / 0.95) 10%, transparent 00%);
+    linear-gradient(to top, hsl(var(--background)) 0%, hsl(var(--background) / 0.07) 10%, transparent 70%),
+    radial-gradient(150% 45% at 50% 100%, hsl(var(--background) / 0.7) 0%, transparent 0%);
 }
 
 /* Animated streaks running along hero rects */
