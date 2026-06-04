@@ -5,11 +5,11 @@ import { motion } from "framer-motion"
 const skills = [
     { name: "HTML/CSS", level: 85, category: "frontend" },
     { name: "JavaScript", level: 70, category: "frontend" },
-    { name: "TypeScript", level: 80, category: "frontend" },
+    { name: "TypeScript", level: 70, category: "frontend" },
     { name: "Dart", level: 80, category: "frontend" },
 
     { name: "Python", level: 90, category: "backend" },
-    { name: "Node.js", level: 75, category: "backend" },
+    { name: "Node.js", level: 65, category: "backend" },
     { name: "C", level: 55, category: "backend" },
     { name: "C++", level: 50, category: "backend" },
     { name: "SQL", level: 30, category: "backend" },

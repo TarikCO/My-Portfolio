@@ -119,17 +119,17 @@ export const ProjectsSection = () => {
                 works correctly outside the CSS-transformed canvas ancestor */}
             {selectedProject && createPortal(
                 <div
-                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm"
+                    className="fixed inset-0 z-50 flex items-start justify-center px-4 pb-4 pt-24 bg-background/80 backdrop-blur-sm overflow-y-auto overscroll-contain"
                     onClick={() => setSelectedProject(null)}
                     onWheel={(e) => e.stopPropagation()}
                 >
                     <div
-                        className="bg-card border border-border/60 rounded-2xl max-w-4xl w-full max-h-[92vh] overflow-y-auto no-scrollbar shadow-2xl"
+                        className="bg-card border border-border/60 rounded-2xl max-w-4xl w-full h-[calc(100dvh-7rem)] md:h-[calc(100vh-7rem)] overflow-hidden flex flex-col shadow-2xl"
                         onClick={(e) => e.stopPropagation()}
                         onWheel={(e) => e.stopPropagation()}
                     >
                         {/* Modal image */}
-                        <div className="h-56 md:h-72 overflow-hidden rounded-t-2xl relative">
+                        <div className="h-48 md:h-72 shrink-0 overflow-hidden rounded-t-2xl relative">
                             <img
                                 src={selectedProject.image}
                                 alt={selectedProject.title}
@@ -137,15 +137,23 @@ export const ProjectsSection = () => {
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
                             <button
+                                type="button"
                                 onClick={() => setSelectedProject(null)}
-                                className="absolute top-4 right-4 p-2 rounded-full bg-background/70 text-foreground hover:text-primary transition-colors"
+                                aria-label="Close project details"
+                                style={{ cursor: "pointer" }}
+                                className="absolute top-4 right-4 z-10 p-2 rounded-full bg-background/80 text-foreground shadow-lg shadow-black/20 hover:text-primary transition-colors"
                             >
                                 <X size={18} />
                             </button>
                         </div>
 
                         {/* Modal content */}
-                        <div className="p-8">
+                        <div
+                            className="flex-1 min-h-0 overflow-y-auto overscroll-contain touch-pan-y no-scrollbar p-6 md:p-8"
+                            data-lenis-prevent
+                            onTouchMove={(e) => e.stopPropagation()}
+                            style={{ WebkitOverflowScrolling: "touch" }}
+                        >
                             <h3 className="text-2xl font-bold mb-3">{selectedProject.title}</h3>
                             <div className="text-muted-foreground leading-relaxed mb-6 flex flex-col gap-3">
                                 {selectedProject.description.map((paragraph, index) => (
