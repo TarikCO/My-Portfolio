@@ -106,7 +106,7 @@ export const Navbar = () => {
                     {/* Logo — quiet, name-first */}
                     <button
                         onClick={() => handleNav("hero")}
-                        className="group flex items-center gap-2 select-none md:translate-x-[-200px]"
+                        className="group flex items-center gap-2 select-none md:translate-x-[-100px]"
                     >
                         <span className="flex h-7 w-7 items-center justify-center rounded-md bg-foreground/6 text-foreground/35 text-xs font-bold tracking-wide transition-all duration-300 group-hover:bg-primary/12 group-hover:text-primary">
                             TO
@@ -119,7 +119,7 @@ export const Navbar = () => {
                     {/* Floating pill — desktop, toggle included */}
                     <nav
                         className={cn(
-                            "hidden md:flex translate-x-[200px] items-center gap-0.5 rounded-full px-2.5 py-1 transition-all duration-500",
+                            "hidden md:flex translate-x-[100px] items-center gap-0.5 rounded-full px-2.5 py-1 transition-all duration-500",
                             isScrolled
                                 ? "bg-background/65 backdrop-blur-xl border border-border/50 shadow-md shadow-black/15"
                                 : "bg-background/20 backdrop-blur-md border border-border"
