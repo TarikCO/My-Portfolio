@@ -5,13 +5,13 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 // ─── Experience data ──────────────────────────────────────────────────────────
 const experiences = [
     {
-        role: "Flutter Developer Intern",
+        role: "Software Engineer Intern",
         company: "BTG Pactual",
         date: "June 2026 - Present",
         location: "São Paulo, Brazil",
         description:
-            "Joining the Mobile Development team to build and enhance BTG's client-facing mobile applications. Contributing to both frontend Flutter code and backend services, while gaining experience in a fast-paced financial technology environment.",
-        tags: ["Flutter", "Dart"],
+            "Worked on the BTG Empresas mobile app within an Agile Scrum development environment. I developed and maintained production-ready Flutter applications that support foreign-exchange operations and credit card receivables anticipation for corporate clients, applying object-oriented design principles and modern software development practices. I also directly collaborated with other related teams such as backend, UX, and security team - ensuring end-to-end features with exceptional quality standards.",
+        tags: ["Flutter", "Dart", "Firebase", "AWS", "Azure DevOps"],
     },
     {
         role: "Head of Technology",
@@ -19,8 +19,8 @@ const experiences = [
         date: "May 2026 - Present",
         location: "Tampa, FL",
         description:
-            "Leading the technology development for BRASA Connect, the largest Brazilian student-led conference in Florida. Overseeing a team of developers to build and maintain the organization's web platform, while ensuring scalability and reliability.",
-        tags: ["React.js", "Node.js", "Flutter", "Firebase"],
+            "Leading the technology development for BRASA Connect, the largest Brazilian student-led conference in Florida. Overseeing a team of four developers to build and maintain the organization's digitial platforms, while ensuring scalability and reliability.",
+        tags: ["React.js", "Node.js", "Flutter", "Firebase", "Project Management"],
     },
     {
         role: "Student Experience Leader",
@@ -37,7 +37,7 @@ const experiences = [
         date: "Jul 2025 - May 2026",
         location: "Tampa, FL",
         description:
-            "Member of BRASA Connect's tech team, the largest Brazilian student-led conference in Florida. Responsible for developing and maintaining the conference's web application, as well as its database and internal tools.",
+            "Member of BRASA Connect's tech team, responsible for developing and maintaining the conference's web application, as well as its database and internal tools.",
         tags: ["Flutter", "Dart", "Firebase"],
     },
     {
