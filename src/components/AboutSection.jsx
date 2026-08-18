@@ -67,7 +67,7 @@ export const AboutSection = () => {
                                 I focus on <span className="text-foreground font-medium">software engineering</span> and care deeply about web & mobile development as well as UX Design - the craft of making software feel effortless
                             </p>
                             <p>
-                                This summer, I will be joining <span className="text-foreground font-medium">BTG Pactual</span> as a Summer Intern, where I will be developing my software development skills through the company's Mobile Development team
+                                Last summer, I worked at <span className="text-foreground font-medium">BTG Pactual</span> as a Software Engineer Intern, where I developed my technical and professionals skills through the company's Mobile Development team
                             </p>
                             <p>
                                 My journey has been defined by learning through building. From Python and React to Flutter, I push my skills through real projects and organizations such as <span className="text-foreground font-medium">BRASA Connect</span>

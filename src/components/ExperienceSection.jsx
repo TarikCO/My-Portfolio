@@ -7,7 +7,7 @@ const experiences = [
     {
         role: "Software Engineer Intern",
         company: "BTG Pactual",
-        date: "June 2026 - Present",
+        date: "June 2026 - Aug 2026",
         location: "São Paulo, Brazil",
         description:
             "Worked on the BTG Empresas mobile app within an Agile Scrum development environment. I developed and maintained production-ready Flutter applications that support foreign-exchange operations and credit card receivables anticipation for corporate clients, applying object-oriented design principles and modern software development practices. I also directly collaborated with other related teams such as backend, UX, and security team - ensuring end-to-end features with exceptional quality standards.",
